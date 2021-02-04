@@ -80,6 +80,15 @@ protected:
 	bool StopCoroutine(FName CoroName);
 	//停止一个对象下的所有携程
 	void StopAllCoroutine();
+
+	/**********************延迟节点************************************/
+	template<class UserClass>
+	bool StartInvokeDelay(FName InvokeName,float DelayTime, UserClass* Obj,typename FInvokeDelegate::TUObjectMethodDelegate<UserClass>::FMethodPtr InMothodPtr);
+	template<class UserClass>
+	bool StartInvokeRepeated(FName InvokeName, float DelayTime,float RepeatedTime, UserClass* Obj, typename FInvokeDelegate::TUObjectMethodDelegate<UserClass>::FMethodPtr InMothodPtr);
+	bool StopInvoke(FName InvokeName);
+	//停止一个对象下的所有携程
+	void StopAllInvoke();
 protected:
 
 	UObject* Body;
@@ -111,4 +120,20 @@ FFuncHandle ISSCObjectInterface::RegisterFuncHandle(int32 ModuleID, FName CallNa
 	}
 	
 	return Dirver->RegisterFuncHandle<RetType, VarTypes...>(ModuleID,CallName,InFunc);
+}
+
+template<class UserClass>
+bool ISSCObjectInterface::StartInvokeDelay(FName InvokeName, float DelayTime, UserClass* Obj, typename FInvokeDelegate::TUObjectMethodDelegate<UserClass>::FMethodPtr InMothodPtr)
+{
+	FInvokeTask* Task = new FInvokeTask(DelayTime, false, 0.f);
+	Task->FInvokeDel.BindUObject(Obj, InMothodPtr);
+	return Module->StartInvoke(GetObjectName(), InvokeName, Task);
+}
+
+template<class UserClass>
+bool ISSCObjectInterface::StartInvokeRepeated(FName InvokeName, float DelayTime, float RepeatedTime, UserClass* Obj, typename FInvokeDelegate::TUObjectMethodDelegate<UserClass>::FMethodPtr InMothodPtr)
+{
+	FInvokeTask* Task = new FInvokeTask(DelayTime, true, RepeatedTime);
+	Task->FInvokeDel.BindUObject(Obj, InMothodPtr);
+	return Module->StartInvoke(GetObjectName(), InvokeName, Task);
 }

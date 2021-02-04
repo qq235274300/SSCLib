@@ -287,3 +287,18 @@ void USSCModule::StopAllCoroutine(FName ObjName)
 	Message->StopAllCoroutine(ObjName);
 }
 
+bool USSCModule::StartInvoke(FName ObjName, FName InvokeName, FInvokeTask* InvokeTask)
+{
+	return Message->StartInvoke(ObjName, InvokeName, InvokeTask);
+}
+
+bool USSCModule::StopInvoke(FName ObjName, FName InvokeName)
+{
+	return Message->StopInvoke(ObjName, InvokeName);
+}
+
+void USSCModule::StopAllInvoke(FName ObjName)
+{
+	Message->StopAllInvoke(ObjName);
+}
+

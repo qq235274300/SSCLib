@@ -255,3 +255,13 @@ void ISSCObjectInterface::StopAllCoroutine()
 {
 	Module->StopAllCoroutine(GetObjectName());
 }
+
+bool ISSCObjectInterface::StopInvoke(FName InvokeName)
+{
+	return Module->StopInvoke(GetObjectName(), InvokeName);
+}
+
+void ISSCObjectInterface::StopAllInvoke()
+{
+	Module->StopAllInvoke(GetObjectName());
+}

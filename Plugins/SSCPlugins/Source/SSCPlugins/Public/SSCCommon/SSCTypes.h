@@ -707,3 +707,61 @@ struct FCoroStack
 };
 
 #pragma endregion
+
+#pragma region Invoke
+
+DECLARE_DELEGATE(FInvokeDelegate)
+
+struct  FInvokeTask
+{
+public:
+	float DelayTime;
+	float TimeCount;
+	bool IsRepeated;
+	float RepeatedTime;
+	bool IsRepeatedState;
+	FInvokeDelegate  FInvokeDel;
+	
+	FInvokeTask(float _DelayTime, bool _IsRepeated, float _RepeatedTime)
+	{
+		DelayTime = _DelayTime;
+		IsRepeated = _IsRepeated;
+		RepeatedTime = _RepeatedTime;
+		IsRepeatedState = false;
+		TimeCount = 0.f;
+	}
+
+	bool UpdateOperate(float DeltaSeconds)
+	{
+		TimeCount+= DeltaSeconds;
+		if (!IsRepeatedState)
+		{
+			if (TimeCount >= DelayTime)
+			{
+				
+				FInvokeDel.ExecuteIfBound();
+				TimeCount = 0.f;
+				if (IsRepeated)
+				{
+					IsRepeatedState = true;
+				}
+				else
+				{
+					return true;
+				}
+			}
+		}
+		else
+		{			
+			if (TimeCount >= RepeatedTime)
+			{
+				FInvokeDel.ExecuteIfBound();
+				TimeCount = 0.f;
+			}
+		}
+		return false;
+	}
+
+};
+
+#pragma endregion

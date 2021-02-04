@@ -68,6 +68,15 @@ public:
 	void StopAllCoroutine(FName ObjName);
 	/***************************************************************/
 
+	/*********************延迟节点*********************************/
+	//true 开启成功，flase 有同名携程存在
+	bool StartInvoke(FName ObjName, FName InvokeName, FInvokeTask* InvokeTask);
+	bool StopInvoke(FName ObjName, FName InvokeName);
+	//停止一个对象下的所有携程
+	void StopAllInvoke(FName ObjName);
+	/***************************************************************/
+
+
 	
 	/****************************Test******************************/
 	

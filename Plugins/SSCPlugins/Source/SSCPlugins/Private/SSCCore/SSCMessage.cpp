@@ -46,6 +46,36 @@ void USSCMessage::ModuleTick(float DeltaSeconds)
 	{
 		CoroGroup.Remove(ObjNameArray[i]);
 	}
+
+
+	//处理延迟节点
+	ObjNameArray.Empty();
+	for (TMap<FName, TMap<FName, FInvokeTask*>>::TIterator It(InvokeGroup); It; ++It)
+	{
+		TArray<FName> InvokeNameArray;
+		for (TMap<FName, FInvokeTask*>::TIterator it(It->Value); it; ++it)
+		{
+			if (it->Value->UpdateOperate(DeltaSeconds))
+			{
+				delete it->Value;
+				InvokeNameArray.Push(it->Key);
+			}
+		}
+
+		for (int i = 0; i < InvokeNameArray.Num(); ++i)
+		{
+			It->Value.Remove(InvokeNameArray[i]);
+		}
+		if (It->Value.Num() == 0)
+		{
+			ObjNameArray.Push(It->Key);
+		}
+	}
+
+	for (int i = 0; i < ObjNameArray.Num(); ++i)
+	{
+		InvokeGroup.Remove(ObjNameArray[i]);
+	}
 }
 
 
@@ -79,8 +109,6 @@ bool USSCMessage::StopCoroutine(FName ObjName, FName CoroName)
 
 		return true;
 	}
-
-
 	return false;
 }
 
@@ -94,4 +122,50 @@ void USSCMessage::StopAllCoroutine(FName ObjName)
 		}
 		CoroGroup.Remove(ObjName);
 	}
+}
+
+bool USSCMessage::StartInvoke(FName ObjName, FName InvokeName, FInvokeTask* InvokeTask)
+{
+	if (!InvokeGroup.Contains(ObjName))
+	{
+		TMap<FName, FInvokeTask*>Invoketask;
+		InvokeGroup.Add(ObjName, Invoketask);
+
+	}
+	if (!InvokeGroup.Find(ObjName)->Contains(InvokeName))
+	{
+		InvokeGroup.Find(ObjName)->Add(InvokeName, InvokeTask);
+		return true;
+	}
+	delete InvokeTask;
+	return false;
+}
+
+bool USSCMessage::StopInvoke(FName ObjName, FName InvokeName)
+{
+	if (InvokeGroup.Contains(ObjName) && InvokeGroup.Find(ObjName)->Contains(InvokeName))
+	{
+		FInvokeTask* invoketask = *(InvokeGroup.Find(ObjName)->Find(InvokeName));
+		InvokeGroup.Find(ObjName)->Remove(InvokeName);
+		delete invoketask;
+		if (InvokeGroup.Find(ObjName)->Num() == 0)
+			InvokeGroup.Remove(ObjName);
+
+		return true;
+	}
+	return false;
+}
+
+void USSCMessage::StopAllInvoke(FName ObjName)
+{
+	if (InvokeGroup.Contains(ObjName))
+	{
+		for (TMap<FName, FInvokeTask*>::TIterator it(*InvokeGroup.Find(ObjName)); it; ++it)
+		{
+			delete it->Value;
+			
+		}
+		InvokeGroup.Remove(ObjName);	
+	}
+
 }

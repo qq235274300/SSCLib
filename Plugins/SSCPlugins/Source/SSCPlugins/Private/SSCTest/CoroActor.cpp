@@ -13,7 +13,8 @@ void ACoroActor::ModelEnable()
 	Super::ModelEnable();
 	IsCoroPause = true;
 
-	StartCoroutine("CoroTestThree", CoroTestThree());
+	StartInvokeRepeated("InvokeTest",5.f,1.f,this,&ACoroActor::TestInvoke);
+	//StartCoroutine("CoroTestThree", CoroTestThree());
 }
 
 void ACoroActor::ModelTick(float DeltaSeconds)
@@ -109,4 +110,8 @@ bool ACoroActor::PauseFunPtr()
 	return true;
 }
 
+void ACoroActor::TestInvoke()
+{
+	SSCHelper::Debug() << "U Are Gay " << SSCHelper::Endl();
+}
 

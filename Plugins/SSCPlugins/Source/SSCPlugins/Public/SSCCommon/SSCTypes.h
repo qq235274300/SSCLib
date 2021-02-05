@@ -17,7 +17,6 @@ class SSCPLUGINS_API USSCTypes : public UObject
 	
 };
 
-
 #pragma region DebugHelper
 
 class SSCPLUGINS_API SSCRecord
@@ -715,6 +714,7 @@ DECLARE_DELEGATE(FInvokeDelegate)
 struct  FInvokeTask
 {
 public:
+	bool isDestroy;
 	float DelayTime;
 	float TimeCount;
 	bool IsRepeated;
@@ -729,6 +729,7 @@ public:
 		RepeatedTime = _RepeatedTime;
 		IsRepeatedState = false;
 		TimeCount = 0.f;
+		isDestroy = false;
 	}
 
 	bool UpdateOperate(float DeltaSeconds)

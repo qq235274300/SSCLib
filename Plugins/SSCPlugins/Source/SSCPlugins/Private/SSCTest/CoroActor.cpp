@@ -12,8 +12,7 @@ void ACoroActor::ModelEnable()
 {
 	Super::ModelEnable();
 	IsCoroPause = true;
-
-	StartInvokeRepeated("InvokeTest",5.f,1.f,this,&ACoroActor::TestInvoke);
+	//StartInvokeRepeated("InvokeTest",5.f,1.f,this,&ACoroActor::TestInvoke);
 	//StartCoroutine("CoroTestThree", CoroTestThree());
 }
 
@@ -81,8 +80,6 @@ FCoroStack* ACoroActor::CoroTestThree()
 
 		}
 	}
-
-
 #include SSCYIELD_READY()
 	SSCYIELD_RETURN_SECOND(5.f);
 
@@ -97,7 +94,6 @@ bool ACoroActor::PauseLambda()
 	LambdaTime++;
 	if (LambdaTime == 10)
 		return false;
-
 	return true;
 }
 

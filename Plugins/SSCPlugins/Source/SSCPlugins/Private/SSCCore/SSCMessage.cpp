@@ -27,7 +27,7 @@ void USSCMessage::ModuleTick(float DeltaSeconds)
 		for (TMap<FName, FCoroStack*>::TIterator it(It->Value); it; ++it)
 		{
 			it->Value->Work(DeltaSeconds);
-			if (it->Value->IsFinish())
+			if (it->Value->IsFinish() || it->Value->isDestroy)
 			{
 				delete it->Value;
 				CoroNameArray.Push(it->Key);
@@ -55,7 +55,7 @@ void USSCMessage::ModuleTick(float DeltaSeconds)
 		TArray<FName> InvokeNameArray;
 		for (TMap<FName, FInvokeTask*>::TIterator it(It->Value); it; ++it)
 		{
-			if (it->Value->UpdateOperate(DeltaSeconds))
+			if (it->Value->UpdateOperate(DeltaSeconds) || it->Value->isDestroy)
 			{
 				delete it->Value;
 				InvokeNameArray.Push(it->Key);
@@ -101,12 +101,7 @@ bool USSCMessage::StopCoroutine(FName ObjName, FName CoroName)
 {
 	if (CoroGroup.Contains(ObjName) && CoroGroup.Find(ObjName)->Contains(CoroName))
 	{
-		FCoroStack* corotask = *(CoroGroup.Find(ObjName)->Find(CoroName));
-		CoroGroup.Find(ObjName)->Remove(CoroName);
-		delete corotask;
-		if (CoroGroup.Find(ObjName)->Num() == 0)
-			CoroGroup.Remove(ObjName);
-
+		 (*(CoroGroup.Find(ObjName)->Find(CoroName)))->isDestroy = true;
 		return true;
 	}
 	return false;
@@ -118,9 +113,9 @@ void USSCMessage::StopAllCoroutine(FName ObjName)
 	{
 		for (TMap<FName, FCoroStack*>::TIterator it(*CoroGroup.Find(ObjName)); it; ++it)
 		{
-			delete  it->Value;		
+			  it->Value->isDestroy = true;
 		}
-		CoroGroup.Remove(ObjName);
+		
 	}
 }
 
@@ -145,12 +140,8 @@ bool USSCMessage::StopInvoke(FName ObjName, FName InvokeName)
 {
 	if (InvokeGroup.Contains(ObjName) && InvokeGroup.Find(ObjName)->Contains(InvokeName))
 	{
-		FInvokeTask* invoketask = *(InvokeGroup.Find(ObjName)->Find(InvokeName));
-		InvokeGroup.Find(ObjName)->Remove(InvokeName);
-		delete invoketask;
-		if (InvokeGroup.Find(ObjName)->Num() == 0)
-			InvokeGroup.Remove(ObjName);
 
+		(*(InvokeGroup.Find(ObjName)->Find(InvokeName)))->isDestroy = true;
 		return true;
 	}
 	return false;
@@ -162,10 +153,10 @@ void USSCMessage::StopAllInvoke(FName ObjName)
 	{
 		for (TMap<FName, FInvokeTask*>::TIterator it(*InvokeGroup.Find(ObjName)); it; ++it)
 		{
-			delete it->Value;
+			 it->Value->isDestroy = true;
 			
 		}
-		InvokeGroup.Remove(ObjName);	
+		
 	}
 
 }

@@ -77,6 +77,22 @@ public:
 	/***************************************************************/
 
 
+
+	/*********************°ó¶¨°´¼ü**********************************/
+	template<class UserClass>
+	FInputAxisBinding& BindAxis(const FName AxisName, UserClass* ClassObj, typename FInputAxisHandlerSignature::TUObjectMethodDelegate<UserClass>::FMethodPtr InMethod);
+	template<class UserClass>
+	FInputActionBinding& BindAction(const FName ActionName, const EInputEvent KeyEvent, UserClass* ClassObj, typename FInputActionHandlerSignature::TUObjectMethodDelegate<UserClass>::FMethodPtr InMethod);
+	template<class UserClass>
+	FInputTouchBinding& BindTouch(const EInputEvent KeyEvent, UserClass* ClassObj, typename FInputTouchHandlerSignature::TUObjectMethodDelegate<UserClass>::FMethodPtr InMethod);
+	template<class UserClass>
+	FInputKeyBinding& BindKey(const FKey Key, const EInputEvent KeyEvent, UserClass* ClassObj, typename FInputActionHandlerSignature::TUObjectMethodDelegate<UserClass>::FMethodPtr InMethod);
+	template<class UserClass>
+	UBinderEvent& BindKeys(UserClass* ClassObj, typename FInputBinderDelegate::TUObjectMethodDelegate<UserClass>::FMethodPtr InMethod,  TArray<FKey>& Keys, FName ObjName);
+	void UnBindKeys(FName ObjName);
+
+
+	/***************************************************************/
 	
 	/****************************Test******************************/
 	
@@ -100,4 +116,34 @@ template<typename RetType, typename...VarTypes>
 FFuncHandle USSCModule::RegisterFuncHandle(FName CallName, TFunction<RetType(VarTypes...)> InFunc)
 {
 	return Message->RegisterFuncHandle<RetType, VarTypes... >(CallName, InFunc);
+}
+
+template<class UserClass>
+FInputAxisBinding& USSCModule::BindAxis(const FName AxisName, UserClass* ClassObj, typename FInputAxisHandlerSignature::TUObjectMethodDelegate<UserClass>::FMethodPtr InMethod)
+{
+	return Message->BindAxis(AxisName, ClassObj, InMethod);
+}
+
+template<class UserClass>
+FInputActionBinding& USSCModule::BindAction(const FName ActionName, const EInputEvent KeyEvent, UserClass* ClassObj, typename FInputActionHandlerSignature::TUObjectMethodDelegate<UserClass>::FMethodPtr InMethod)
+{
+	return Message->BindAction(ActionName, KeyEvent, ClassObj, InMethod);
+}
+
+template<class UserClass>
+FInputTouchBinding& USSCModule::BindTouch(const EInputEvent KeyEvent, UserClass* ClassObj, typename FInputTouchHandlerSignature::TUObjectMethodDelegate<UserClass>::FMethodPtr InMethod)
+{
+	return Message->BindTouch( KeyEvent, ClassObj, InMethod);
+}
+
+template<class UserClass>
+FInputKeyBinding& USSCModule::BindKey(const FKey Key, const EInputEvent KeyEvent, UserClass* ClassObj, typename FInputActionHandlerSignature::TUObjectMethodDelegate<UserClass>::FMethodPtr InMethod)
+{
+	return Message->BindKey(Key,KeyEvent,ClassObj,InMethod);
+}
+
+template<class UserClass>
+UBinderEvent& USSCModule::BindKeys(UserClass* ClassObj, typename FInputBinderDelegate::TUObjectMethodDelegate<UserClass>::FMethodPtr InMethod,  TArray<FKey>& Keys, FName ObjName)
+{
+	return Message->BindKeys(ClassObj, InMethod, Keys, ObjName);
 }

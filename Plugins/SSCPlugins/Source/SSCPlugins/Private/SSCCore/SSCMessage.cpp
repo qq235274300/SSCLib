@@ -2,6 +2,31 @@
 
 
 #include "SSCMessage.h"
+#include "SSCCommon.h"
+
+UBinderEvent::UBinderEvent()
+{
+	bExecuteWhenPaused = false;
+	InputCount = 0;
+}
+
+void UBinderEvent::PressEvnt()
+{
+	InputCount++;
+	if (InputCount == TotoalCount)
+	{
+		if (!bExecuteWhenPaused)
+			InputBinderDel.ExecuteIfBound();
+		if(bExecuteWhenPaused && !USSCCommon::Get()->IsGamePause())
+			InputBinderDel.ExecuteIfBound();
+	}
+}
+
+void UBinderEvent::ReleasedEvnt()
+{
+	InputCount--;
+}
+
 
 USSCMessage::USSCMessage()
 {
@@ -10,12 +35,12 @@ USSCMessage::USSCMessage()
 
 void USSCMessage::ModuleInit()
 {
-
+	
 }
 
 void USSCMessage::ModuleBeginPlay()
 {
-
+	PlayerController = USSCCommon::Get()->GetPlayerController();
 }
 
 void USSCMessage::ModuleTick(float DeltaSeconds)
@@ -159,4 +184,17 @@ void USSCMessage::StopAllInvoke(FName ObjName)
 		
 	}
 
+}
+void USSCMessage::UnBindKeys(FName ObjName)
+{
+	if (InputBinderGroup.Contains(ObjName))
+	{
+		TArray<UBinderEvent*> Binders = *InputBinderGroup.Find(ObjName);
+		for (int i = 0; i < Binders.Num(); ++i)
+		{
+			Binders[i]->RemoveFromRoot();
+			Binders[i]->ConditionalBeginDestroy();
+		}
+		InputBinderGroup.Remove(ObjName);
+	}
 }

@@ -40,7 +40,7 @@ void ASSCDriver::PostInitializeComponents()
 void ASSCDriver::BeginPlay()
 {
 	Super::BeginPlay();
-
+	RegisterGamePlay();
 	Center->IterModuleInit(Center);
 
 }

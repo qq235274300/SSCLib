@@ -302,3 +302,8 @@ void USSCModule::StopAllInvoke(FName ObjName)
 	Message->StopAllInvoke(ObjName);
 }
 
+void USSCModule::UnBindKeys(FName ObjName)
+{
+	Message->UnBindKeys(ObjName);
+}
+

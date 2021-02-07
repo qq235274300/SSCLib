@@ -14,6 +14,9 @@ void ACoroActor::ModelEnable()
 	IsCoroPause = true;
 	//StartInvokeRepeated("InvokeTest",5.f,1.f,this,&ACoroActor::TestInvoke);
 	//StartCoroutine("CoroTestThree", CoroTestThree());
+	//BindKey(EKeys::F, EInputEvent::IE_Pressed, this, &ACoroActor::TestInvoke);
+	BindKeys(this,&ACoroActor::TestInvoke,EKeys::F,EKeys::G);
+	
 }
 
 void ACoroActor::ModelTick(float DeltaSeconds)

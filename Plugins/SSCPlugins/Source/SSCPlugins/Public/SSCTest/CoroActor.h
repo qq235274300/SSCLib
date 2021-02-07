@@ -93,10 +93,12 @@ public:
 
 
 protected:
+	
 	FCoroStack* CoroTestThree();
 	bool PauseLambda();
 	bool PauseFunPtr();
 	void TestInvoke();
+	
 protected:
 	TArray<FCoroStack*> CoroTaskGroup;
 

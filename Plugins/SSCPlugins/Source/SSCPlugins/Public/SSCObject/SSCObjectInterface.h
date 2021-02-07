@@ -89,6 +89,23 @@ protected:
 	bool StopInvoke(FName InvokeName);
 	//停止一个对象下的所有携程
 	void StopAllInvoke();
+
+	/*********************绑定按键**********************************/
+	template<class UserClass>
+	FInputAxisBinding& BindAxis(const FName AxisName, UserClass* ClassObj, typename FInputAxisHandlerSignature::TUObjectMethodDelegate<UserClass>::FMethodPtr InMethod);
+	template<class UserClass>
+	FInputActionBinding& BindAction(const FName ActionName, const EInputEvent KeyEvent, UserClass* ClassObj, typename FInputActionHandlerSignature::TUObjectMethodDelegate<UserClass>::FMethodPtr InMethod);
+	template<class UserClass>
+	FInputTouchBinding& BindTouch(const EInputEvent KeyEvent, UserClass* ClassObj, typename FInputTouchHandlerSignature::TUObjectMethodDelegate<UserClass>::FMethodPtr InMethod);
+	template<class UserClass>
+	FInputKeyBinding& BindKey(const FKey Key, const EInputEvent KeyEvent, UserClass* ClassObj, typename FInputActionHandlerSignature::TUObjectMethodDelegate<UserClass>::FMethodPtr InMethod);
+	template<class UserClass>
+	UBinderEvent& BindKeys(UserClass* ClassObj, typename FInputBinderDelegate::TUObjectMethodDelegate<UserClass>::FMethodPtr InMethod, FKey Key_I, FKey Key_II);
+	//template<class UserClass>
+	//UBinderEvent& BindKeys(UserClass* ClassObj, typename FInputBinderDelegate::TUObjectMethodDelegate<UserClass>::MethodPtr InMethod, FKey Key_I, FKey Key_II,FKey Key_III);
+	void UnBindKeys();
+
+
 protected:
 
 	UObject* Body;
@@ -137,3 +154,47 @@ bool ISSCObjectInterface::StartInvokeRepeated(FName InvokeName, float DelayTime,
 	Task->FInvokeDel.BindUObject(Obj, InMothodPtr);
 	return Module->StartInvoke(GetObjectName(), InvokeName, Task);
 }
+
+template<class UserClass>
+FInputAxisBinding& ISSCObjectInterface::BindAxis(const FName AxisName, UserClass* ClassObj, typename FInputAxisHandlerSignature::TUObjectMethodDelegate<UserClass>::FMethodPtr InMethod)
+{
+	return Module->BindAxis(AxisName, ClassObj, InMethod);
+}
+
+template<class UserClass>
+FInputActionBinding& ISSCObjectInterface::BindAction(const FName ActionName, const EInputEvent KeyEvent, UserClass* ClassObj, typename FInputActionHandlerSignature::TUObjectMethodDelegate<UserClass>::FMethodPtr InMethod)
+{
+	return Module->BindAction(ActionName, KeyEvent, ClassObj, InMethod);
+}
+
+template<class UserClass>
+FInputTouchBinding& ISSCObjectInterface::BindTouch(const EInputEvent KeyEvent, UserClass* ClassObj, typename FInputTouchHandlerSignature::TUObjectMethodDelegate<UserClass>::FMethodPtr InMethod)
+{
+	return Module->BindTouch( KeyEvent, ClassObj, InMethod);
+}
+
+template<class UserClass>
+FInputKeyBinding& ISSCObjectInterface::BindKey(const FKey Key, const EInputEvent KeyEvent, UserClass* ClassObj, typename FInputActionHandlerSignature::TUObjectMethodDelegate<UserClass>::FMethodPtr InMethod)
+{
+	return Module->BindKey(Key , KeyEvent, ClassObj, InMethod);
+}
+
+template<class UserClass>
+UBinderEvent& ISSCObjectInterface::BindKeys(UserClass* ClassObj, typename FInputBinderDelegate::TUObjectMethodDelegate<UserClass>::FMethodPtr InMethod, FKey Key_I, FKey Key_II)
+{
+	TArray<FKey> Keys;
+	Keys.Push(Key_I);
+	Keys.Push(Key_II);
+	
+	return Module->BindKeys(ClassObj, InMethod, Keys,GetObjectName());
+}
+
+//template<class UserClass>
+//UBinderEvent& ISSCObjectInterface::BindKeys(UserClass* ClassObj, typename FInputBinderDelegate::TUObjectMethodDelegate<UserClass>::MethodPtr InMethod, FKey Key_I, FKey Key_II, FKey Key_III)
+//{
+//	TArray<FKey> Keys;
+//	Keys.Push(Key_I);
+//	Keys.Push(Key_II);
+//	Keys.Push(Key_III);
+//	return Module->BindKeys(ClassObj, InMethod, Keys, GetObjectName());
+//}

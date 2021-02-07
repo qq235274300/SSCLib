@@ -148,7 +148,9 @@ void ISSCObjectInterface::ModelUnLoading()
 
 void ISSCObjectInterface::ModelRelease()
 {
-
+	StopAllCoroutine();
+	StopAllInvoke();
+	UnBindKeys();
 }
 
 bool ISSCObjectInterface::ActiveLife()
@@ -264,4 +266,9 @@ bool ISSCObjectInterface::StopInvoke(FName InvokeName)
 void ISSCObjectInterface::StopAllInvoke()
 {
 	Module->StopAllInvoke(GetObjectName());
+}
+
+void ISSCObjectInterface::UnBindKeys()
+{
+	Module->UnBindKeys(GetObjectName());
 }

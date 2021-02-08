@@ -5,6 +5,9 @@
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
 #include "Engine/GameEngine.h"
+#include "Blueprint/UserWidget.h"
+#include "GameFramework/Actor.h"
+#include "Engine/DataAsset.h"
 #include "SSCTypes.generated.h"
 
 /**
@@ -764,5 +767,71 @@ public:
 	}
 
 };
+
+#pragma endregion
+
+#pragma region Wealth
+
+USTRUCT()
+struct SSCPLUGINS_API FWealthItemBase
+{
+	GENERATED_BODY()
+public:
+	UPROPERTY(EditAnywhere)
+		FName ObjectName;
+	UPROPERTY(EditAnywhere)
+		FName ClassName;
+};
+
+USTRUCT()
+struct SSCPLUGINS_API FWealthItemObject : public FWealthItemBase
+{
+	GENERATED_BODY()
+public:
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UObject> ObjectClass;
+};
+
+USTRUCT()
+struct SSCPLUGINS_API FWealthItemActor : public FWealthItemBase
+{
+	GENERATED_BODY()
+public:
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<AActor> ActorClass;
+	UPROPERTY(EditAnywhere)
+		FTransform SpawnTransform;
+};
+
+USTRUCT()
+struct SSCPLUGINS_API FWealthItemWidget : public FWealthItemBase
+{
+	GENERATED_BODY()
+public:
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UUserWidget> WidgetClass;
+};
+
+
+UCLASS()
+class SSCPLUGINS_API UWealthDataAsset : public UDataAsset
+{
+	GENERATED_BODY()
+
+public:
+	UPROPERTY(EditAnywhere)
+	FName ModuleName;  //为空默认为所在模组
+
+	UPROPERTY(EditAnywhere)
+		TArray<FWealthItemObject> AutoObjects;
+	
+	UPROPERTY(EditAnywhere)
+		TArray<FWealthItemActor> AutoActors;
+
+	UPROPERTY(EditAnywhere)
+		TArray<FWealthItemWidget> AutoWidgets;
+};
+
+
 
 #pragma endregion

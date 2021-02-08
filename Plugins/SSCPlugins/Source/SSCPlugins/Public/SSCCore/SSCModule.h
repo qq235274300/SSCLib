@@ -104,6 +104,9 @@ private:
 	USSCModel* Model;
 	USSCMessage* Message;
 	USSCWealth* Wealth;
+public:
+	UPROPERTY(EditAnywhere)
+	TArray<UWealthDataAsset*> AutoDataAssets;
 };
 
 template<typename RetType, typename...VarTypes>

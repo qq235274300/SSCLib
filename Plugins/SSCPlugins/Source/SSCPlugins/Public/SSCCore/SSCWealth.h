@@ -17,6 +17,16 @@ public:
 	virtual void ModuleInit();
 	virtual void ModuleBeginPlay();
 	virtual void ModuleTick(float DeltaSeconds);
+public:
+	void SetAutoDataAssets(TArray<UWealthDataAsset*>& InData);
+private:
+	TArray<UWealthDataAsset*> AutoDataAssets;
+
+	UPROPERTY()
+		TArray<UUserWidget*> AutoCreateWidgetData;
+
+
+
 
 protected:
 	float Timer = 0.f;

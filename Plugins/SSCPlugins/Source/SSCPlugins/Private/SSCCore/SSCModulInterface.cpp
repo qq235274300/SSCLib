@@ -3,6 +3,7 @@
 
 #include "SSCModulInterface.h"
 #include "SSCCommon.h"
+#include "SSCDriver.h"
 #include "SSCModule.h"
 
 // Add default functionality here for any ISSCModulInterface functions that are not pure virtual.
@@ -36,4 +37,12 @@ void ISSCModulInterface::ProcessObjectReflectFuncEvnt(FObjectFunctionAgrement Ag
 	{
 		Dirver->ProcessObjectReflectFuncEvnt(Agrement, Parm);
 	}
+}
+
+UWorld* ISSCModulInterface::GetModuleWorld()
+{
+	if (Dirver)
+		return Dirver->GetWorld();
+
+	return nullptr;
 }

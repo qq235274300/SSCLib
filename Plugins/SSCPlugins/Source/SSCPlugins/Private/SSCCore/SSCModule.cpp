@@ -49,6 +49,9 @@ void USSCModule::ModuleInit()
 
 void USSCModule::ModuleBeginPlay()
 {
+	//注册自动加载资源到资源模块
+	Wealth->SetAutoDataAssets(AutoDataAssets);
+	/*********************************/
 	Model->ModuleBeginPlay();
 	Message->ModuleBeginPlay();
 	Wealth->ModuleBeginPlay();

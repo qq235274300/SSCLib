@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "UObject/Interface.h"
 #include "SSCTypes.h"
+
 #include "SSCModulInterface.generated.h"
 
 // This class does not need to be modified.
@@ -31,9 +32,14 @@ public:
 	void ProcessObjectReflectFuncEvnt(FObjectFunctionAgrement Agrement, FRelfectFuncParam* Parm);
 	/****************************************************/
 
+	UWorld* GetModuleWorld();
+
+
+public:
+	USSCModule* Module;
 private:
 
-	USSCModule* Module;
+	
 	ASSCDriver* Dirver;
 	int32 _ModuleIndex;
 };

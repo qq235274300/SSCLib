@@ -101,8 +101,8 @@ protected:
 	FInputKeyBinding& BindKey(const FKey Key, const EInputEvent KeyEvent, UserClass* ClassObj, typename FInputActionHandlerSignature::TUObjectMethodDelegate<UserClass>::FMethodPtr InMethod);
 	template<class UserClass>
 	UBinderEvent& BindKeys(UserClass* ClassObj, typename FInputBinderDelegate::TUObjectMethodDelegate<UserClass>::FMethodPtr InMethod, FKey Key_I, FKey Key_II);
-	//template<class UserClass>
-	//UBinderEvent& BindKeys(UserClass* ClassObj, typename FInputBinderDelegate::TUObjectMethodDelegate<UserClass>::MethodPtr InMethod, FKey Key_I, FKey Key_II,FKey Key_III);
+	template<class UserClass>
+	UBinderEvent& BindKeys(UserClass* ClassObj, typename FInputBinderDelegate::TUObjectMethodDelegate<UserClass>::FMethodPtr InMethod, FKey Key_I, FKey Key_II,FKey Key_III);
 	void UnBindKeys();
 
 
@@ -189,12 +189,12 @@ UBinderEvent& ISSCObjectInterface::BindKeys(UserClass* ClassObj, typename FInput
 	return Module->BindKeys(ClassObj, InMethod, Keys,GetObjectName());
 }
 
-//template<class UserClass>
-//UBinderEvent& ISSCObjectInterface::BindKeys(UserClass* ClassObj, typename FInputBinderDelegate::TUObjectMethodDelegate<UserClass>::MethodPtr InMethod, FKey Key_I, FKey Key_II, FKey Key_III)
-//{
-//	TArray<FKey> Keys;
-//	Keys.Push(Key_I);
-//	Keys.Push(Key_II);
-//	Keys.Push(Key_III);
-//	return Module->BindKeys(ClassObj, InMethod, Keys, GetObjectName());
-//}
+template<class UserClass>
+UBinderEvent& ISSCObjectInterface::BindKeys(UserClass* ClassObj, typename FInputBinderDelegate::TUObjectMethodDelegate<UserClass>::FMethodPtr InMethod, FKey Key_I, FKey Key_II, FKey Key_III)
+{
+	TArray<FKey> Keys;
+	Keys.Push(Key_I);
+	Keys.Push(Key_II);
+	Keys.Push(Key_III);
+	return Module->BindKeys(ClassObj, InMethod, Keys, GetObjectName());
+}

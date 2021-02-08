@@ -17,9 +17,9 @@ void ACoroActor::ModelEnable()
 	//BindKey(EKeys::F, EInputEvent::IE_Pressed, this, &ACoroActor::TestInvoke);
 	//BindKeys(this,&ACoroActor::TestInvoke,EKeys::F,EKeys::G);
 	
-	CallAutoObjFunc(int32(ESSCGame::HUD), "AutoTestObj", "TestObj");
-	CallAutoObjFunc(int32(ESSCGame::HUD), "AutoTestActor", "TestActor");
-	CallAutoObjFunc(int32(ESSCGame::HUD), "AutoTestWidget", "TestWidget");
+	//CallAutoObjFunc(int32(ESSCGame::HUD), "AutoTestObj", "TestObj");
+	//CallAutoObjFunc(int32(ESSCGame::HUD), "AutoTestActor", "TestActor");
+	//CallAutoObjFunc(int32(ESSCGame::HUD), "AutoTestWidget", "TestWidget");
 }
 
 void ACoroActor::ModelTick(float DeltaSeconds)

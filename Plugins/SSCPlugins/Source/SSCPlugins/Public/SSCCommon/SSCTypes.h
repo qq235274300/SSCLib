@@ -772,6 +772,7 @@ public:
 
 #pragma region Wealth
 
+/*********************自动加载对象*****************************/
 USTRUCT()
 struct SSCPLUGINS_API FWealthItemBase
 {
@@ -812,6 +813,66 @@ public:
 	TSubclassOf<UUserWidget> WidgetClass;
 };
 
+/*********************************************************/
+
+/******************批量加载对象*****************************/
+
+USTRUCT()
+struct SSCPLUGINS_API FWealthObjectEntry
+{
+	GENERATED_BODY()
+public:
+	UPROPERTY(EditAnywhere)
+		FName ObjName;
+	UPROPERTY(EditAnywhere)
+		FName KindName;
+	UPROPERTY(EditAnywhere)
+		FStringAssetReference ObjectPath;
+	UPROPERTY()
+		UObject* Obj;
+};
+
+UENUM()
+enum class EWealthClassType :uint8
+{
+	Object = 0,
+	Actor,
+	Widget
+};
+
+USTRUCT()
+struct SSCPLUGINS_API FWealthClassEntry
+{
+	GENERATED_BODY()
+public:
+	UPROPERTY(EditAnywhere)
+		EWealthClassType ClassType;
+	UPROPERTY(EditAnywhere)
+		FName ObjName;
+	UPROPERTY(EditAnywhere)
+		FName KindName;
+	UPROPERTY(EditAnywhere)
+		TSoftClassPtr<UObject> ClassPtr;
+	UPROPERTY()
+		UClass* Obj;
+};
+
+
+USTRUCT()
+struct SSCPLUGINS_API FWealthURL
+{
+	GENERATED_BODY()
+public:
+	UPROPERTY(EditAnywhere)
+		FName ObjName;
+	UPROPERTY(EditAnywhere)
+		FName KindName;
+	UPROPERTY(EditAnywhere)
+		FStringAssetReference ObjectPath;
+	UPROPERTY(EditAnywhere)
+		TSoftClassPtr<UObject> ClassPtr;
+};
+/*********************************************************/
 
 UCLASS()
 class SSCPLUGINS_API UWealthDataAsset : public UDataAsset
@@ -830,6 +891,15 @@ public:
 
 	UPROPERTY(EditAnywhere)
 		TArray<FWealthItemWidget> AutoWidgets;
+
+	/*******************************/
+
+	UPROPERTY(EditAnywhere)
+		TArray<FWealthObjectEntry> WealthObjects;
+	UPROPERTY(EditAnywhere)
+		TArray<FWealthClassEntry> WealthClasses;
+	UPROPERTY(EditAnywhere)
+		TArray<FWealthURL> WealthURLs;
 };
 
 

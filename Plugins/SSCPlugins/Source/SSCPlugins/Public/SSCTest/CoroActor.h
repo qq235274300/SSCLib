@@ -90,7 +90,7 @@ public:
 	virtual void ModelEnable()override;
 	virtual void ModelTick(float DeltaSeconds)override;
 
-	REFOBJFUNC(CallAutoObjFunc);
+	//REFOBJFUNC(CallAutoObjFunc);
 
 protected:
 	

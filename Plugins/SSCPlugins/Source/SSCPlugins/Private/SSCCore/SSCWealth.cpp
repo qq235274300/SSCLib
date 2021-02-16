@@ -41,6 +41,40 @@ public:
 	}
 };
 
+struct FSingleClassEntryLoadNode
+{
+public:
+	TSharedPtr<FStreamableHandle> LoaderHandle;
+	FWealthClassEntry* WealthClassEntry;
+	FName ObjectName;
+	FName FuncName;
+	FSingleClassEntryLoadNode(TSharedPtr<FStreamableHandle> _LoaderHandle, FWealthClassEntry* _WealthClassEntry, FName _ObjectName, FName _FuncName)
+	{
+		LoaderHandle = _LoaderHandle;
+		WealthClassEntry = _WealthClassEntry;
+		ObjectName = _ObjectName;
+		FuncName = _FuncName;
+	}
+};
+
+struct FKindClassEntryLoadNode
+{
+public:
+	TSharedPtr<FStreamableHandle> LoaderHandle;
+	TArray<FWealthClassEntry*> LoadEntrys;
+	TArray<FWealthClassEntry*> UnLoadEntrys;
+	FName ObjectName;
+	FName FuncName;
+	FKindClassEntryLoadNode(TSharedPtr<FStreamableHandle> _LoaderHandle, TArray<FWealthClassEntry*> _LoadEntrys,
+		TArray<FWealthClassEntry*> _UnLoadEntrys, FName _ObjectName, FName _FuncName)
+	{
+		LoaderHandle = _LoaderHandle;
+		LoadEntrys = _LoadEntrys;
+		UnLoadEntrys = _UnLoadEntrys;
+		ObjectName = _ObjectName;
+		FuncName = _FuncName;
+	}
+};
 
 void USSCWealth::ModuleInit()
 {
@@ -98,6 +132,19 @@ void USSCWealth::ModuleBeginPlay()
 				);
 			}
 		}
+#if WITH_EDITOR
+		//保证编译器运行时异步加载
+
+		for (int j = 0; j < AutoDataAssets[i]->WealthObjects.Num(); ++j)
+		{
+			AutoDataAssets[i]->WealthObjects[j].ObjInst = nullptr;
+		}
+		for (int j = 0; j < AutoDataAssets[i]->WealthClasses.Num(); ++j)
+		{
+			AutoDataAssets[i]->WealthClasses[j].ObjInst = nullptr;
+		}
+#endif
+
 	}
 }
 
@@ -106,6 +153,8 @@ void USSCWealth::ModuleTick(float DeltaSeconds)
 	//Call01((int32)ESSCGame::Center,"TestActor01","RefCallFunc","balalalal");
 	DealSingleObjectEntryLoadArray();
 	DealKindObjectEntryLoadArray();
+	DealSingleClassEntryLoadArray();
+	DealKindClassEntryLoadArray();
 }
 
 void USSCWealth::SetAutoDataAssets(TArray<UWealthDataAsset*>& InData)
@@ -165,16 +214,49 @@ TArray<FWealthObjectEntry*> USSCWealth::GetWealthObjectKindEntry(FName WealthKin
 	return ObjectEntrys;
 }
 
+FWealthClassEntry* USSCWealth::GetWealthClassSingleEntry(FName WealthName)
+{
+	for (int i = 0; i < AutoDataAssets.Num(); ++i)
+	{
+		for (int j = 0; j < AutoDataAssets[i]->WealthClasses.Num(); ++j)
+		{
+			if (AutoDataAssets[i]->WealthClasses[j].ObjName.IsEqual(WealthName))
+			{
+				return &AutoDataAssets[i]->WealthClasses[j];
+			}
+		}
+	}
+	return nullptr;
+}
+
+TArray<FWealthClassEntry*> USSCWealth::GetWealthClassKindEntry(FName WealthKindName)
+{
+	TArray<FWealthClassEntry*> ClassEntrys;
+	for (int i = 0; i < AutoDataAssets.Num(); ++i)
+	{
+		for (int j = 0; j < AutoDataAssets[i]->WealthClasses.Num(); ++j)
+		{
+			if (AutoDataAssets[i]->WealthClasses[j].KindName.IsEqual(WealthKindName))
+			{
+				ClassEntrys.Push(&AutoDataAssets[i]->WealthClasses[j]);				
+			}
+		}
+	}
+	return ClassEntrys;
+}
+
 void USSCWealth::LoadObjectEntry(FName _WealthName, FName _ObjName, FName _FunName)
 {
 	FWealthObjectEntry*	 ObjectEntry = GetWealthObjectSingleEntry(_WealthName);
 	if (!ObjectEntry)
 	{
 		SSCHelper::Debug() << _ObjName <<"--->"<< _WealthName<<"--->"<< "Object Asset is Empty" << SSCHelper::Endl();
+		return;
 	}
 	if (!ObjectEntry->ObjectPath.IsValid())
 	{
 		SSCHelper::Debug() << _ObjName << "--->" << _WealthName << "--->" << "Object Asset is Not Valid" << SSCHelper::Endl();
+		return;
 	}
 	if (ObjectEntry->ObjInst)
 	{
@@ -195,6 +277,7 @@ void USSCWealth::LoadObjectKindEntry(FName _WealthKindName, FName _ObjName, FNam
 	if (WealthKindEntry.Num() == 0)
 	{
 		SSCHelper::Debug() << _ObjName << "--->" << _WealthKindName << "--->" << "ObjectKind Asset is Empty" << SSCHelper::Endl();
+		return;
 	}
 	for (int i = 0; i < WealthKindEntry.Num(); ++i)
 	{
@@ -245,6 +328,86 @@ void USSCWealth::LoadObjectKindEntry(FName _WealthKindName, FName _ObjName, FNam
 		
 	}
 
+}
+
+void USSCWealth::LoadClassEntry(FName _WealthName, FName _ObjName, FName _FunName)
+{
+	FWealthClassEntry* ClassEntry =	 GetWealthClassSingleEntry(_WealthName);
+	if (!ClassEntry)
+	{
+		SSCHelper::Debug() << _ObjName << "--->" << _WealthName << "--->" << "UClass Asset is Empty" << SSCHelper::Endl();
+		return;
+	}
+	if (!ClassEntry->ClassPtr.ToSoftObjectPath().IsValid())
+	{
+		SSCHelper::Debug() << _ObjName << "--->" << _WealthName << "--->" << "UClass Path is Not Valid" << SSCHelper::Endl();
+		return;
+	}
+	if (ClassEntry->ObjInst)
+	{
+		BackWealthClassSingle(_ModuleIndex, _ObjName, _FunName, _WealthName, ClassEntry->ObjInst);
+	}
+	else
+	{
+		TSharedPtr<FStreamableHandle> LoadHandler = WealthLoader.RequestAsyncLoad(ClassEntry->ClassPtr.ToSoftObjectPath());
+		SingleClassEntryLoadArray.Push(new FSingleClassEntryLoadNode(LoadHandler,ClassEntry,_ObjName,_FunName));
+	}
+}
+
+void USSCWealth::LoadClassKindEntry(FName _WealthKindName, FName _ObjName, FName _FunName)
+{
+	TArray<FWealthClassEntry*> ClassEntrys = GetWealthClassKindEntry(_WealthKindName);
+	if (ClassEntrys.Num() == 0)
+	{
+		SSCHelper::Debug() << _ObjName << "--->" << _WealthKindName << "--->" << "UClass Asset is Empty" << SSCHelper::Endl();
+		return;
+	}
+	for (int i = 0; i < ClassEntrys.Num(); ++i)
+	{
+		if (!ClassEntrys[i]->ClassPtr.ToSoftObjectPath().IsValid())
+		{
+			SSCHelper::Debug() << _ObjName << "--->" << _WealthKindName << "--->" << "UClass Path is Not Valid" << SSCHelper::Endl();
+			return;
+		}
+	}
+	TArray<FWealthClassEntry*> UnLoadClassEntrys;
+	TArray<FWealthClassEntry*> LoadClassEntrys;
+
+	for (int i = 0; i < ClassEntrys.Num(); ++i)
+	{
+		if (ClassEntrys[i]->ObjInst)
+		{
+			LoadClassEntrys.Push(ClassEntrys[i]);
+		}
+		else
+		{
+			UnLoadClassEntrys.Push(ClassEntrys[i]);
+		}
+	}
+		
+
+	if (UnLoadClassEntrys.Num() == 0)
+	{
+		TArray<FName> _WealthNames;
+		TArray<UClass*> _WealthClasses;
+		for (int i = 0; i < LoadClassEntrys.Num(); ++i)
+		{
+			_WealthNames.Push(LoadClassEntrys[i]->ObjName);
+			_WealthClasses.Push(LoadClassEntrys[i]->ObjInst);
+		}
+		
+		BackWealthClassKind(_ModuleIndex, _ObjName, _FunName, _WealthNames, _WealthClasses);
+	}
+	else
+	{
+		TArray<FSoftObjectPath> WealthPaths;
+		for (int i = 0; i < UnLoadClassEntrys.Num(); ++i)
+		{
+			WealthPaths.Push(UnLoadClassEntrys[i]->ClassPtr.ToSoftObjectPath());
+		}
+		TSharedPtr<FStreamableHandle> ClassHandle = WealthLoader.RequestAsyncLoad(WealthPaths);
+		KindClassEntryLoadArray.Push(new FKindClassEntryLoadNode(ClassHandle, LoadClassEntrys, UnLoadClassEntrys, _ObjName, _FunName));
+	}
 }
 
 void USSCWealth::DealSingleObjectEntryLoadArray()
@@ -299,6 +462,66 @@ void USSCWealth::DealKindObjectEntryLoadArray()
 	for (int i = 0; i < CompleteNodes.Num(); ++i)
 	{
 		KindObjectEntryLoadArray.Remove(CompleteNodes[i]);
+		delete  CompleteNodes[i];
+	}
+}
+
+void USSCWealth::DealSingleClassEntryLoadArray()
+{
+	TArray<FSingleClassEntryLoadNode*> CompeletedNodes;
+	for (int i = 0; i < SingleClassEntryLoadArray.Num(); ++i)
+	{
+		if (SingleClassEntryLoadArray[i]->LoaderHandle->HasLoadCompleted())
+		{
+			SingleClassEntryLoadArray[i]->WealthClassEntry->ObjInst = Cast<UClass>(SingleClassEntryLoadArray[i]->WealthClassEntry->ClassPtr.ToSoftObjectPath().ResolveObject());
+			CompeletedNodes.Push(SingleClassEntryLoadArray[i]);
+			BackWealthClassSingle(_ModuleIndex, SingleClassEntryLoadArray[i]->ObjectName, SingleClassEntryLoadArray[i]->FuncName,
+				SingleClassEntryLoadArray[i]->WealthClassEntry->ObjName, SingleClassEntryLoadArray[i]->WealthClassEntry->ObjInst);
+			
+		}
+	}
+	for (int i = 0; i < CompeletedNodes.Num(); ++i)
+	{
+		SingleClassEntryLoadArray.Remove(CompeletedNodes[i]);
+		delete CompeletedNodes[i];
+	}
+}
+
+void USSCWealth::DealKindClassEntryLoadArray()
+{
+	TArray<FKindClassEntryLoadNode*> CompleteNodes;
+	for (int i = 0; i < KindClassEntryLoadArray.Num(); ++i)
+	{
+		if (KindClassEntryLoadArray[i]->LoaderHandle->HasLoadCompleted() && KindClassEntryLoadArray[i]->UnLoadEntrys.Num() > 0)
+		{
+			for (int j = 0; j < KindClassEntryLoadArray[i]->UnLoadEntrys.Num(); ++j)
+			{
+				KindClassEntryLoadArray[i]->UnLoadEntrys[j]->ObjInst = Cast<UClass>(KindClassEntryLoadArray[i]->UnLoadEntrys[j]->ClassPtr.ToSoftObjectPath().ResolveObject());
+			}
+			KindClassEntryLoadArray[i]->LoadEntrys.Append(KindClassEntryLoadArray[i]->UnLoadEntrys);
+			KindClassEntryLoadArray[i]->UnLoadEntrys.Empty();
+
+			if (KindClassEntryLoadArray[i]->UnLoadEntrys.Num() == 0)
+			{
+				//加载Uclass 或者 生成资源
+				TArray<FName> _Names;
+				TArray<UClass*> _Classes;
+
+				for (int j = 0; j < KindClassEntryLoadArray[i]->LoadEntrys.Num(); ++j)
+				{
+					_Names.Push(KindClassEntryLoadArray[i]->LoadEntrys[j]->ObjName);
+					_Classes.Push(KindClassEntryLoadArray[i]->LoadEntrys[j]->ObjInst);
+				}
+
+				BackWealthClassKind(_ModuleIndex, KindClassEntryLoadArray[i]->ObjectName, KindClassEntryLoadArray[i]->FuncName, _Names, _Classes);
+				CompleteNodes.Push(KindClassEntryLoadArray[i]);
+			}	
+		}
+	}
+
+	for (int i = 0; i < CompleteNodes.Num(); ++i)
+	{
+		KindClassEntryLoadArray.Remove(CompleteNodes[i]);
 		delete  CompleteNodes[i];
 	}
 }

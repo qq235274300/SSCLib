@@ -293,6 +293,16 @@ TArray<FWealthObjectEntry*> ISSCObjectInterface::GetWealthObjectKindEntry(FName 
 	return Module->GetWealthObjectKindEntry(WealthKindName);
 }
 
+FWealthClassEntry* ISSCObjectInterface::GetWealthClassSingleEntry(FName WealthName)
+{
+	return Module->GetWealthClassSingleEntry(WealthName);
+}
+
+TArray<FWealthClassEntry*> ISSCObjectInterface::GetWealthClassKindEntry(FName WealthKindName)
+{
+	return Module->GetWealthClassKindEntry(WealthKindName);
+}
+
 void ISSCObjectInterface::LoadObjectEntry(FName _WealthName, FName _FunName)
 {
 	Module->LoadObjectEntry(_WealthName, GetObjectName(), _FunName);
@@ -301,4 +311,14 @@ void ISSCObjectInterface::LoadObjectEntry(FName _WealthName, FName _FunName)
 void ISSCObjectInterface::LoadObjectKindEntry(FName _WealthKindName, FName _FunName)
 {
 	Module->LoadObjectKindEntry(_WealthKindName, GetObjectName(), _FunName);
+}
+
+void ISSCObjectInterface::LoadClassEntry(FName _WealthName, FName _FunName)
+{
+	Module->LoadClassEntry(_WealthName, GetObjectName(), _FunName);
+}
+
+void ISSCObjectInterface::LoadClassKindEntry(FName _WealthKindName, FName _FunName)
+{
+	Module->LoadClassKindEntry(_WealthKindName, GetObjectName(), _FunName);
 }

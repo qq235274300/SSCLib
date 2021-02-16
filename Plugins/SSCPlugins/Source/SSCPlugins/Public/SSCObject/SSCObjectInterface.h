@@ -111,10 +111,13 @@ protected:
 
 	FWealthObjectEntry* GetWealthObjectSingleEntry(FName WealthName);
 	TArray<FWealthObjectEntry*> GetWealthObjectKindEntry(FName WealthKindName);
-
+	FWealthClassEntry* GetWealthClassSingleEntry(FName WealthName);
+	TArray<FWealthClassEntry*> GetWealthClassKindEntry(FName WealthKindName);
 
 	void LoadObjectEntry(FName _WealthName, FName _FunName);
 	void LoadObjectKindEntry(FName _WealthKindName, FName _FunName);
+	void LoadClassEntry(FName _WealthName,FName _FunName);
+	void LoadClassKindEntry(FName _WealthKindName,FName _FunName);
 	/***************************************************************/
 
 protected:

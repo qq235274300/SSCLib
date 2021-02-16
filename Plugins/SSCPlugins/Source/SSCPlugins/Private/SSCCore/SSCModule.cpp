@@ -330,6 +330,16 @@ TArray<FWealthObjectEntry*> USSCModule::GetWealthObjectKindEntry(FName WealthKin
 	return Wealth->GetWealthObjectKindEntry(WealthKindName);
 }
 
+FWealthClassEntry* USSCModule::GetWealthClassSingleEntry(FName WealthName)
+{
+	return Wealth->GetWealthClassSingleEntry(WealthName);
+}
+
+TArray<FWealthClassEntry*> USSCModule::GetWealthClassKindEntry(FName WealthKindName)
+{
+	return Wealth->GetWealthClassKindEntry(WealthKindName);
+}
+
 void USSCModule::LoadObjectEntry(FName _WealthName, FName _ObjName, FName _FunName)
 {
 	Wealth->LoadObjectEntry(_WealthName, _ObjName, _FunName);
@@ -338,5 +348,15 @@ void USSCModule::LoadObjectEntry(FName _WealthName, FName _ObjName, FName _FunNa
 void USSCModule::LoadObjectKindEntry(FName _WealthKindName, FName _ObjName, FName _FunName)
 {
 	Wealth->LoadObjectKindEntry(_WealthKindName, _ObjName, _FunName);
+}
+
+void USSCModule::LoadClassEntry(FName _WealthName, FName _ObjName, FName _FunName)
+{
+	Wealth->LoadClassEntry(_WealthName, _ObjName, _FunName);
+}
+
+void USSCModule::LoadClassKindEntry(FName _WealthKindName, FName _ObjName, FName _FunName)
+{
+	Wealth->LoadClassKindEntry(_WealthKindName, _ObjName, _FunName);
 }
 

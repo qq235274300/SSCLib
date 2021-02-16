@@ -14,7 +14,7 @@ void ULoadWidgt0::ModelLoading()
 {
 	Super::ModelLoading();
 	//LoadObjectEntry("ViewImage01", "BindLoadSingleObjectEntryEvnt");
-	LoadObjectKindEntry("ViewImage", "BindLoadKindObjectEntryEvnt");
+	//LoadObjectKindEntry("ViewImage", "BindLoadKindObjectEntryEvnt");
 }
 
 void ULoadWidgt0::BindLoadSingleObjectEntryEvnt(FName WealthName, UObject* WealthObject)

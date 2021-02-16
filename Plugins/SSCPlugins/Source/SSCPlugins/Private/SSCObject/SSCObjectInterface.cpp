@@ -322,3 +322,13 @@ void ISSCObjectInterface::LoadClassKindEntry(FName _WealthKindName, FName _FunNa
 {
 	Module->LoadClassKindEntry(_WealthKindName, GetObjectName(), _FunName);
 }
+
+void ISSCObjectInterface::BuildSinglClassWealth(EWealthClassType Type, FName _WealthName, FName _FunName)
+{
+	Module->BuildSinglClassWealth(Type, _WealthName, GetObjectName(), _FunName, FTransform::Identity);
+}
+
+void ISSCObjectInterface::BuildSinglClassWealth(EWealthClassType Type, FName _WealthName, FName _FunName, FTransform _SpawnTransform)
+{
+	Module->BuildSinglClassWealth(Type, _WealthName, GetObjectName(), _FunName, _SpawnTransform);
+}

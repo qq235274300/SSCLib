@@ -113,11 +113,15 @@ protected:
 	TArray<FWealthObjectEntry*> GetWealthObjectKindEntry(FName WealthKindName);
 	FWealthClassEntry* GetWealthClassSingleEntry(FName WealthName);
 	TArray<FWealthClassEntry*> GetWealthClassKindEntry(FName WealthKindName);
-
+	//加载UObject资源
 	void LoadObjectEntry(FName _WealthName, FName _FunName);
 	void LoadObjectKindEntry(FName _WealthKindName, FName _FunName);
+	//加载UClass资源
 	void LoadClassEntry(FName _WealthName,FName _FunName);
 	void LoadClassKindEntry(FName _WealthKindName,FName _FunName);
+	//创建对象实列
+	void BuildSinglClassWealth(EWealthClassType Type, FName _WealthName, FName _FunName);
+	void BuildSinglClassWealth(EWealthClassType Type, FName _WealthName, FName _FunName, FTransform _SpawnTransform);
 	/***************************************************************/
 
 protected:

@@ -360,3 +360,8 @@ void USSCModule::LoadClassKindEntry(FName _WealthKindName, FName _ObjName, FName
 	Wealth->LoadClassKindEntry(_WealthKindName, _ObjName, _FunName);
 }
 
+void USSCModule::BuildSinglClassWealth(EWealthClassType Type, FName _WealthName, FName _ObjName, FName _FunName, FTransform _SpawnTransform)
+{
+	Wealth->BuildSinglClassWealth(Type, _WealthName, _ObjName, _FunName, _SpawnTransform);
+}
+

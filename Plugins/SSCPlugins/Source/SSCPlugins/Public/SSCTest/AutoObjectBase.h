@@ -16,14 +16,20 @@ class SSCPLUGINS_API UAutoObjectBase : public USSCObject
 	
 public:
 	virtual void ModelLoading()override;
+	virtual void ModelTick(float DeltaSeconds)override;
 	
 	UFUNCTION()
 		void BindSingleClassLoadEvnt(FName WealthName, UClass* ClassInst);
 	UFUNCTION()
 		void BindKindClassLoadEvnt(TArray<FName> WealthNames, TArray<UClass*> ClassInsts);
 	
+	UFUNCTION()
+		void BindBuildSingeActor(FName WealthName,AActor* WealthActor);
+
 	UPROPERTY(EditAnywhere)
 		FTransform SpawnTransform;
 	UPROPERTY(EditAnywhere)
 		float OffsetValue;
+
+	AActor* SingleActor;
 };

@@ -48,12 +48,26 @@ public:
 	FWealthClassEntry* WealthClassEntry;
 	FName ObjectName;
 	FName FuncName;
+	FTransform SpawnTransform;
+	bool isLoadClass; //为true 表示只加载 false 加载完直接生成对象
+
 	FSingleClassEntryLoadNode(TSharedPtr<FStreamableHandle> _LoaderHandle, FWealthClassEntry* _WealthClassEntry, FName _ObjectName, FName _FuncName)
 	{
 		LoaderHandle = _LoaderHandle;
 		WealthClassEntry = _WealthClassEntry;
 		ObjectName = _ObjectName;
 		FuncName = _FuncName;
+		isLoadClass = true;
+	}
+
+	FSingleClassEntryLoadNode(TSharedPtr<FStreamableHandle> _LoaderHandle, FWealthClassEntry* _WealthClassEntry, FName _ObjectName, FName _FuncName,FTransform _SpawnTransform)
+	{
+		LoaderHandle = _LoaderHandle;
+		WealthClassEntry = _WealthClassEntry;
+		ObjectName = _ObjectName;
+		FuncName = _FuncName;
+		SpawnTransform = _SpawnTransform;
+		isLoadClass = false;
 	}
 };
 
@@ -410,6 +424,53 @@ void USSCWealth::LoadClassKindEntry(FName _WealthKindName, FName _ObjName, FName
 	}
 }
 
+void USSCWealth::BuildSinglClassWealth(EWealthClassType Type, FName _WealthName, FName _ObjName, FName _FunName, FTransform _SpawnTransform)
+{
+	FWealthClassEntry* ClassEntry = GetWealthClassSingleEntry(_WealthName);
+	if (!ClassEntry)
+	{
+		SSCHelper::Debug() << _ObjName << "--->" << _WealthName << "--->" << "UClass Asset is Empty" << SSCHelper::Endl();
+		return;
+	}
+	if (!ClassEntry->ClassPtr.ToSoftObjectPath().IsValid())
+	{
+		SSCHelper::Debug() << _ObjName << "--->" << _WealthName << "--->" << "UClass Path is Not Valid" << SSCHelper::Endl();
+		return;
+	}
+	//判断资源类型
+	if (Type != ClassEntry->ClassType)
+	{
+		SSCHelper::Debug() << _ObjName << "--->" << _WealthName << "--->" << "Wrong Type" << SSCHelper::Endl();
+		return;
+	}
+	if (ClassEntry->ObjInst)
+	{
+		if (Type == EWealthClassType::Object)
+		{
+			UObject* Inst = NewObject<UObject>(this, ClassEntry->ObjInst);
+			Inst->AddToRoot();
+			BackObject(_ModuleIndex, _ObjName, _FunName, _WealthName, Inst);
+		}
+		else if(Type == EWealthClassType::Actor)
+		{
+			AActor* Inst = GetModuleWorld()->SpawnActor<AActor>(ClassEntry->ObjInst, _SpawnTransform);
+			BackActor(_ModuleIndex, _ObjName, _FunName, _WealthName, Inst);
+		}
+		else if (Type == EWealthClassType::Widget)
+		{
+			UUserWidget* Inst = CreateWidget<UUserWidget>(GetModuleWorld(), ClassEntry->ObjInst);
+			AutoCreateWidgetData.Push(Inst);
+			BackWidget(_ModuleIndex, _ObjName, _FunName, _WealthName, Inst);
+		}
+	}
+	else
+	{
+		TSharedPtr<FStreamableHandle> LoadHandle = WealthLoader.RequestAsyncLoad(ClassEntry->ClassPtr.ToSoftObjectPath());
+
+		SingleClassEntryLoadArray.Push(new FSingleClassEntryLoadNode(LoadHandle,ClassEntry,_ObjName,_FunName,_SpawnTransform));
+	}
+}
+
 void USSCWealth::DealSingleObjectEntryLoadArray()
 {
 	TArray<FSingleObjectEntryLoadNode*> CompletedNodeArray;
@@ -474,10 +535,40 @@ void USSCWealth::DealSingleClassEntryLoadArray()
 		if (SingleClassEntryLoadArray[i]->LoaderHandle->HasLoadCompleted())
 		{
 			SingleClassEntryLoadArray[i]->WealthClassEntry->ObjInst = Cast<UClass>(SingleClassEntryLoadArray[i]->WealthClassEntry->ClassPtr.ToSoftObjectPath().ResolveObject());
-			CompeletedNodes.Push(SingleClassEntryLoadArray[i]);
-			BackWealthClassSingle(_ModuleIndex, SingleClassEntryLoadArray[i]->ObjectName, SingleClassEntryLoadArray[i]->FuncName,
-				SingleClassEntryLoadArray[i]->WealthClassEntry->ObjName, SingleClassEntryLoadArray[i]->WealthClassEntry->ObjInst);
+			if (SingleClassEntryLoadArray[i]->isLoadClass)
+			{
+				//返回UCLASS 给请求对象
+				BackWealthClassSingle(_ModuleIndex, SingleClassEntryLoadArray[i]->ObjectName, SingleClassEntryLoadArray[i]->FuncName,
+					SingleClassEntryLoadArray[i]->WealthClassEntry->ObjName, SingleClassEntryLoadArray[i]->WealthClassEntry->ObjInst);
+			}
+			else
+			{
+				//根据UCLASS 直接创建实列
+				if (SingleClassEntryLoadArray[i]->WealthClassEntry->ClassType == EWealthClassType::Object)
+				{
+					UObject* Inst = NewObject<UObject>(this, SingleClassEntryLoadArray[i]->WealthClassEntry->ObjInst);
+					Inst->AddToRoot();
+					BackObject(_ModuleIndex, SingleClassEntryLoadArray[i]->ObjectName, SingleClassEntryLoadArray[i]->FuncName, 
+						SingleClassEntryLoadArray[i]->WealthClassEntry->ObjName, Inst);
+				}
+				else if (SingleClassEntryLoadArray[i]->WealthClassEntry->ClassType == EWealthClassType::Actor)
+				{
+					AActor* Inst = GetModuleWorld()->SpawnActor<AActor>(SingleClassEntryLoadArray[i]->WealthClassEntry->ObjInst, SingleClassEntryLoadArray[i]->SpawnTransform);
+						BackActor(_ModuleIndex, SingleClassEntryLoadArray[i]->ObjectName, SingleClassEntryLoadArray[i]->FuncName,
+							SingleClassEntryLoadArray[i]->WealthClassEntry->ObjName, Inst);
+				}
+				else if (SingleClassEntryLoadArray[i]->WealthClassEntry->ClassType == EWealthClassType::Widget)
+				{
+					UUserWidget* Inst = CreateWidget<UUserWidget>(GetModuleWorld(), SingleClassEntryLoadArray[i]->WealthClassEntry->ObjInst);
+					AutoCreateWidgetData.Push(Inst);
+					BackWidget(_ModuleIndex, SingleClassEntryLoadArray[i]->ObjectName, SingleClassEntryLoadArray[i]->FuncName,
+						SingleClassEntryLoadArray[i]->WealthClassEntry->ObjName, Inst);
+				}
+			}
+		
 			
+			
+			CompeletedNodes.Push(SingleClassEntryLoadArray[i]);
 		}
 	}
 	for (int i = 0; i < CompeletedNodes.Num(); ++i)

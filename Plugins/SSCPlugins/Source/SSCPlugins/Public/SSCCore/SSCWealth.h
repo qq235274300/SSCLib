@@ -42,6 +42,8 @@ public:
 	void LoadObjectKindEntry(FName _WealthKindName, FName _ObjName, FName _FunName); 
 	void LoadClassEntry(FName _WealthName, FName _ObjName, FName _FunName); 
 	void LoadClassKindEntry(FName _WealthKindName, FName _ObjName, FName _FunName);
+
+	void BuildSinglClassWealth(EWealthClassType Type,FName _WealthName, FName _ObjName,FName _FunName,FTransform _SpawnTransform);
 	/********************************************/
 
 protected:
@@ -72,5 +74,9 @@ protected:
 	REFOBJFUNC_TWO(BackWealthObjectKind, TArray<FName>, WealthNameArray, TArray <UObject*>, WealthObjectArray);
 	REFOBJFUNC_TWO(BackWealthClassSingle, FName, WealthName, UClass*, WealthObject);
 	REFOBJFUNC_TWO(BackWealthClassKind, TArray<FName>, WealthNameArray, TArray <UClass*>, WealthClassArray);
+
+	REFOBJFUNC_TWO(BackObject, FName, WealthName, UObject*, WealthObject);
+	REFOBJFUNC_TWO(BackActor, FName, WealthName, AActor*, WealthActor);
+	REFOBJFUNC_TWO(BackWidget, FName, WealthName, UUserWidget*, WealthWidget);
 	//REFOBJFUNC_ONE(Call01,FString,Info);
 };

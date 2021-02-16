@@ -109,6 +109,8 @@ public:
 	void LoadObjectKindEntry(FName _WealthKindName, FName _ObjName, FName _FunName);
 	void LoadClassEntry(FName _WealthName, FName _ObjName, FName _FunName);
 	void LoadClassKindEntry(FName _WealthKindName, FName _ObjName, FName _FunName);
+
+	void BuildSinglClassWealth(EWealthClassType Type, FName _WealthName, FName _ObjName, FName _FunName, FTransform _SpawnTransform);
 	/***************************************************************/
 
 

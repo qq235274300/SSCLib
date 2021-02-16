@@ -272,3 +272,33 @@ void ISSCObjectInterface::UnBindKeys()
 {
 	Module->UnBindKeys(GetObjectName());
 }
+
+FWealthURL* ISSCObjectInterface::GetWealthURL(FName _ObjName)
+{
+	return Module->GetWealthURL(_ObjName);
+}
+
+void ISSCObjectInterface::GetWealthURL(FName _KindName, TArray<FWealthURL*>& OutWealthURL)
+{
+	Module->GetWealthURL(_KindName, OutWealthURL);
+}
+
+FWealthObjectEntry* ISSCObjectInterface::GetWealthObjectSingleEntry(FName WealthName)
+{
+	return Module->GetWealthObjectSingleEntry(WealthName);
+}
+
+TArray<FWealthObjectEntry*> ISSCObjectInterface::GetWealthObjectKindEntry(FName WealthKindName)
+{
+	return Module->GetWealthObjectKindEntry(WealthKindName);
+}
+
+void ISSCObjectInterface::LoadObjectEntry(FName _WealthName, FName _FunName)
+{
+	Module->LoadObjectEntry(_WealthName, GetObjectName(), _FunName);
+}
+
+void ISSCObjectInterface::LoadObjectKindEntry(FName _WealthKindName, FName _FunName)
+{
+	Module->LoadObjectKindEntry(_WealthKindName, GetObjectName(), _FunName);
+}

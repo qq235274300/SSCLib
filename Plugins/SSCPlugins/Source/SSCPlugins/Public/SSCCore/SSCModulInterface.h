@@ -37,9 +37,10 @@ public:
 
 public:
 	USSCModule* Module;
+	int32 _ModuleIndex;
 private:
 
 	
 	ASSCDriver* Dirver;
-	int32 _ModuleIndex;
+	
 };

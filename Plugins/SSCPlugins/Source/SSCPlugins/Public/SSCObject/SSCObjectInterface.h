@@ -105,6 +105,17 @@ protected:
 	UBinderEvent& BindKeys(UserClass* ClassObj, typename FInputBinderDelegate::TUObjectMethodDelegate<UserClass>::FMethodPtr InMethod, FKey Key_I, FKey Key_II,FKey Key_III);
 	void UnBindKeys();
 
+	/*********************º”‘ÿ◊ ‘¥*********************************/
+	FWealthURL* GetWealthURL(FName _ObjName);
+	void GetWealthURL(FName _KindName, TArray<FWealthURL*>& OutWealthURL);
+
+	FWealthObjectEntry* GetWealthObjectSingleEntry(FName WealthName);
+	TArray<FWealthObjectEntry*> GetWealthObjectKindEntry(FName WealthKindName);
+
+
+	void LoadObjectEntry(FName _WealthName, FName _FunName);
+	void LoadObjectKindEntry(FName _WealthKindName, FName _FunName);
+	/***************************************************************/
 
 protected:
 

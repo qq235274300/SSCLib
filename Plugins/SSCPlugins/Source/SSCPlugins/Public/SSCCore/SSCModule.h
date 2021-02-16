@@ -93,7 +93,22 @@ public:
 
 
 	/***************************************************************/
+
+
+
+	/*********************º”‘ÿ◊ ‘¥*********************************/
+	FWealthURL* GetWealthURL(FName _ObjName);
+	void GetWealthURL(FName _KindName, TArray<FWealthURL*>& OutWealthURL);
+
+	FWealthObjectEntry* GetWealthObjectSingleEntry(FName WealthName);
+	TArray<FWealthObjectEntry*> GetWealthObjectKindEntry(FName WealthKindName);
 	
+
+	void LoadObjectEntry(FName _WealthName, FName _ObjName, FName _FunName);
+	void LoadObjectKindEntry(FName _WealthKindName, FName _ObjName, FName _FunName);
+	/***************************************************************/
+
+
 	/****************************Test******************************/
 	
 	/***************************End***********************************/

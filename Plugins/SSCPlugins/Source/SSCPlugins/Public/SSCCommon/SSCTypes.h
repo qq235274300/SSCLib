@@ -829,7 +829,7 @@ public:
 	UPROPERTY(EditAnywhere)
 		FStringAssetReference ObjectPath;
 	UPROPERTY()
-		UObject* Obj;
+		UObject* ObjInst = nullptr;
 };
 
 UENUM()
@@ -854,7 +854,7 @@ public:
 	UPROPERTY(EditAnywhere)
 		TSoftClassPtr<UObject> ClassPtr;
 	UPROPERTY()
-		UClass* Obj;
+		UClass* ObjInst;
 };
 
 

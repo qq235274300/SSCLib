@@ -310,3 +310,33 @@ void USSCModule::UnBindKeys(FName ObjName)
 	Message->UnBindKeys(ObjName);
 }
 
+FWealthURL* USSCModule::GetWealthURL(FName _ObjName)
+{
+	return Wealth->GetWealthURL(_ObjName);
+}
+
+void USSCModule::GetWealthURL(FName _KindName, TArray<FWealthURL*>& OutWealthURL)
+{
+	Wealth->GetWealthURL(_KindName,OutWealthURL);
+}
+
+FWealthObjectEntry* USSCModule::GetWealthObjectSingleEntry(FName WealthName)
+{
+	return Wealth->GetWealthObjectSingleEntry(WealthName);
+}
+
+TArray<FWealthObjectEntry*> USSCModule::GetWealthObjectKindEntry(FName WealthKindName)
+{
+	return Wealth->GetWealthObjectKindEntry(WealthKindName);
+}
+
+void USSCModule::LoadObjectEntry(FName _WealthName, FName _ObjName, FName _FunName)
+{
+	Wealth->LoadObjectEntry(_WealthName, _ObjName, _FunName);
+}
+
+void USSCModule::LoadObjectKindEntry(FName _WealthKindName, FName _ObjName, FName _FunName)
+{
+	Wealth->LoadObjectKindEntry(_WealthKindName, _ObjName, _FunName);
+}
+

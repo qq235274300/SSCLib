@@ -122,6 +122,14 @@ protected:
 	//创建对象实列
 	void BuildSinglClassWealth(EWealthClassType Type, FName _WealthName, FName _FunName);
 	void BuildSinglClassWealth(EWealthClassType Type, FName _WealthName, FName _FunName, FTransform _SpawnTransform);
+
+	void BuildKindClassWealth(EWealthClassType Type, FName _WealthKindName,  FName _FunName);
+	void BuildKindClassWealth(EWealthClassType Type, FName _WealthKindName, FName _FunName, FTransform _SpawnTransforms);
+	void BuildKindClassWealth(EWealthClassType Type, FName _WealthKindName, FName _FunName, TArray<FTransform> _SpawnTransforms);
+
+	void BuildMultiClassWealth(EWealthClassType Type, FName _WealthName, int32 _Amount,  FName _FunName);
+	void BuildMultiClassWealth(EWealthClassType Type, FName _WealthName, int32 _Amount,FName _FunName, FTransform _SpawnTransforms);
+	void BuildMultiClassWealth(EWealthClassType Type, FName _WealthName, int32 _Amount,  FName _FunName, TArray<FTransform> _SpawnTransforms);
 	/***************************************************************/
 
 protected:

@@ -111,6 +111,8 @@ public:
 	void LoadClassKindEntry(FName _WealthKindName, FName _ObjName, FName _FunName);
 
 	void BuildSinglClassWealth(EWealthClassType Type, FName _WealthName, FName _ObjName, FName _FunName, FTransform _SpawnTransform);
+	void BuildKindClassWealth(EWealthClassType Type, FName _WealthKindName, FName _ObjName, FName _FunName, TArray<FTransform> _SpawnTransforms);
+	void BuildMultiClassWealth(EWealthClassType Type, FName _WealthName, int32 _Amount, FName _ObjName, FName _FunName, TArray<FTransform> _SpawnTransforms);
 	/***************************************************************/
 
 

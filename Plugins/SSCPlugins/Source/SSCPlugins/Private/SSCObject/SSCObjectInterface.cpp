@@ -332,3 +332,33 @@ void ISSCObjectInterface::BuildSinglClassWealth(EWealthClassType Type, FName _We
 {
 	Module->BuildSinglClassWealth(Type, _WealthName, GetObjectName(), _FunName, _SpawnTransform);
 }
+
+void ISSCObjectInterface::BuildKindClassWealth(EWealthClassType Type, FName _WealthKindName, FName _FunName)
+{
+	Module->BuildKindClassWealth(Type, _WealthKindName, GetObjectName(), _FunName, TArray<FTransform>{FTransform::Identity });
+}
+
+void ISSCObjectInterface::BuildKindClassWealth(EWealthClassType Type, FName _WealthKindName, FName _FunName, FTransform _SpawnTransforms)
+{
+	Module->BuildKindClassWealth(Type, _WealthKindName, GetObjectName(), _FunName, TArray<FTransform>{_SpawnTransforms });
+}
+
+void ISSCObjectInterface::BuildKindClassWealth(EWealthClassType Type, FName _WealthKindName, FName _FunName, TArray<FTransform> _SpawnTransforms)
+{
+	Module->BuildKindClassWealth(Type, _WealthKindName, GetObjectName(), _FunName, _SpawnTransforms);
+}
+
+void ISSCObjectInterface::BuildMultiClassWealth(EWealthClassType Type, FName _WealthName, int32 _Amount, FName _FunName)
+{
+	Module->BuildMultiClassWealth(Type, _WealthName, _Amount, GetObjectName(), _FunName, TArray<FTransform>{FTransform::Identity});
+}
+
+void ISSCObjectInterface::BuildMultiClassWealth(EWealthClassType Type, FName _WealthName, int32 _Amount, FName _FunName, FTransform _SpawnTransforms)
+{
+	Module->BuildMultiClassWealth(Type, _WealthName, _Amount, GetObjectName(), _FunName, TArray<FTransform>{_SpawnTransforms});
+}
+
+void ISSCObjectInterface::BuildMultiClassWealth(EWealthClassType Type, FName _WealthName, int32 _Amount, FName _FunName, TArray<FTransform> _SpawnTransforms)
+{
+	Module->BuildMultiClassWealth(Type, _WealthName, _Amount, GetObjectName(), _FunName, _SpawnTransforms);
+}

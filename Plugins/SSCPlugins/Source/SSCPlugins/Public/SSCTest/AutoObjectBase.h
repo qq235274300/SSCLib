@@ -26,10 +26,17 @@ public:
 	UFUNCTION()
 		void BindBuildSingeActor(FName WealthName,AActor* WealthActor);
 
+	UFUNCTION()
+		void BindBuildKindActors(TArray<FName> WealthNames, TArray <AActor*> WealthActors );
+	UFUNCTION()
+		void BindMultiAcrtor(FName WealthNames, TArray <AActor*> WealthActors);
+
+
 	UPROPERTY(EditAnywhere)
 		FTransform SpawnTransform;
 	UPROPERTY(EditAnywhere)
 		float OffsetValue;
 
 	AActor* SingleActor;
+	TArray<AActor*> KindActors;
 };

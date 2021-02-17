@@ -365,3 +365,13 @@ void USSCModule::BuildSinglClassWealth(EWealthClassType Type, FName _WealthName,
 	Wealth->BuildSinglClassWealth(Type, _WealthName, _ObjName, _FunName, _SpawnTransform);
 }
 
+void USSCModule::BuildKindClassWealth(EWealthClassType Type, FName _WealthKindName, FName _ObjName, FName _FunName, TArray<FTransform> _SpawnTransforms)
+{
+	Wealth->BuildKindClassWealth(Type, _WealthKindName, _ObjName, _FunName, _SpawnTransforms);
+}
+
+void USSCModule::BuildMultiClassWealth(EWealthClassType Type, FName _WealthName, int32 _Amount, FName _ObjName, FName _FunName, TArray<FTransform> _SpawnTransforms)
+{
+	Wealth->BuildMultiClassWealth(Type, _WealthName, _Amount, _ObjName, _FunName, _SpawnTransforms);
+}
+

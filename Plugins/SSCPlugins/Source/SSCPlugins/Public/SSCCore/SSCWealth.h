@@ -16,6 +16,8 @@ struct FSingleObjectEntryLoadNode;
 struct FKindObjectEntryLoadNode;
 struct FSingleClassEntryLoadNode;
 struct FKindClassEntryLoadNode;
+struct FMultiClassEntryLoadNode;
+
 
 UCLASS()
 class SSCPLUGINS_API USSCWealth : public UObject, public ISSCModulInterface
@@ -44,6 +46,8 @@ public:
 	void LoadClassKindEntry(FName _WealthKindName, FName _ObjName, FName _FunName);
 
 	void BuildSinglClassWealth(EWealthClassType Type,FName _WealthName, FName _ObjName,FName _FunName,FTransform _SpawnTransform);
+	void BuildKindClassWealth(EWealthClassType Type, FName _WealthKindName, FName _ObjName, FName _FunName, TArray<FTransform> _SpawnTransforms);
+	void BuildMultiClassWealth(EWealthClassType Type, FName _WealthName,int32 _Amount, FName _ObjName, FName _FunName, TArray<FTransform> _SpawnTransforms);
 	/********************************************/
 
 protected:
@@ -52,6 +56,7 @@ protected:
 	void DealKindObjectEntryLoadArray();
 	void DealSingleClassEntryLoadArray();
 	void DealKindClassEntryLoadArray();
+	void DealMultiClassEntryLoadNodeArray();
 private:
 	//¼ÓÔØÆ÷
 	FStreamableManager WealthLoader;
@@ -59,6 +64,7 @@ private:
 	TArray<FKindObjectEntryLoadNode*> KindObjectEntryLoadArray;
 	TArray<FSingleClassEntryLoadNode*> SingleClassEntryLoadArray;
 	TArray<FKindClassEntryLoadNode*> KindClassEntryLoadArray;
+	TArray<FMultiClassEntryLoadNode*> MultiClassEntryLoadNodeArray;
 
 	TArray<UWealthDataAsset*> AutoDataAssets;
 
@@ -76,7 +82,15 @@ protected:
 	REFOBJFUNC_TWO(BackWealthClassKind, TArray<FName>, WealthNameArray, TArray <UClass*>, WealthClassArray);
 
 	REFOBJFUNC_TWO(BackObject, FName, WealthName, UObject*, WealthObject);
+	REFOBJFUNC_TWO(BackObjectKind, TArray<FName>, WealthNames, TArray <UObject*>, WealthObjects);
+	REFOBJFUNC_TWO(BackObjectMulti, FName, WealthName, TArray <UObject*>, WealthObjects);
+
 	REFOBJFUNC_TWO(BackActor, FName, WealthName, AActor*, WealthActor);
+	REFOBJFUNC_TWO(BackActorKind, TArray<FName>, WealthNames, TArray <AActor*>, WealthActors);
+	REFOBJFUNC_TWO(BackActorMulti, FName, WealthName, TArray <AActor*>, WealthActors);
+
 	REFOBJFUNC_TWO(BackWidget, FName, WealthName, UUserWidget*, WealthWidget);
+	REFOBJFUNC_TWO(BackWidgetKind, TArray<FName>, WealthNames, TArray <UUserWidget*>, WealthWidgets);
+	REFOBJFUNC_TWO(BackWidgetMulti, FName, WealthName, TArray <UUserWidget*>, WealthWidgets);
 	//REFOBJFUNC_ONE(Call01,FString,Info);
 };

@@ -78,7 +78,7 @@ void ASSCDriver::PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEv
 		Center->IterGetModuleChildren(Center, ModuleType);
 	}
 }
-
+#endif
 bool ASSCDriver::RegisterObject(ISSCObjectInterface* Object)
 {
 	return Center->RegisterObject(Object);
@@ -94,7 +94,7 @@ void ASSCDriver::ProcessObjectReflectFuncEvnt(FObjectFunctionAgrement Agrement, 
 	Center->ProcessObjectReflectFuncEvnt(Agrement, _Param);
 }
 
-#endif
+
 
 // Called every frame
 void ASSCDriver::Tick(float DeltaTime)

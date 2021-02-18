@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
 #include "InventoryData.h"
+#include "Widgets/Views/STreeView.h"
 #include "InventoryDataMgr.generated.h"
 
 class UInventoryData;

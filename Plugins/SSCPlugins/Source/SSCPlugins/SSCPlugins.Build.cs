@@ -80,9 +80,7 @@ public class SSCPlugins : ModuleRules
                 "GameplayTasks",
                 "HeadMountedDisplay",
                 "ProceduralMeshComponent",
-                "EditorScriptingUtilities",
-                "UnrealEd",
-                "LevelEditor"
+               
 
                
 				// ... add private dependencies that you statically link with here ...	

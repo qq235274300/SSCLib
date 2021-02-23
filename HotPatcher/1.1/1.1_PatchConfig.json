@@ -1,0 +1,67 @@
+{
+	"bByBaseVersion": true,
+	"baseVersion":
+	{
+		"filePath": "E:/UE4_Project/SSCProject/Saved/StagedBuilds/WindowsNoEditor/base1.0_Release.json"
+	},
+	"versionId": "1.1",
+	"assetIncludeFilters": [
+		{
+			"path": "/Game"
+		}
+	],
+	"assetIgnoreFilters": [],
+	"bForceSkipContent": true,
+	"forceSkipContentRules": [
+		{
+			"path": "/Engine/Editor"
+		},
+		{
+			"path": "/Engine/VREditor"
+		}
+	],
+	"forceSkipAssets": [],
+	"bIncludeHasRefAssetsOnly": false,
+	"bAnalysisFilterDependencies": true,
+	"bRecursiveWidgetTree": true,
+	"assetRegistryDependencyTypes": [
+		"Packages"
+	],
+	"includeSpecifyAssets": [],
+	"bIncludeAssetRegistry": true,
+	"bIncludeGlobalShaderCache": true,
+	"bIncludeShaderBytecode": true,
+	"bIncludeEngineIni": false,
+	"bIncludePluginIni": false,
+	"bIncludeProjectIni": false,
+	"bEnableExternFilesDiff": true,
+	"ignoreDeletionModulesAsset": [],
+	"addExternAssetsToPlatform": [],
+	"bIncludePakVersionFile": false,
+	"pakVersionFileMountPoint": "../../../SSCProject/Versions/version.json",
+	"bEnableChunk": false,
+	"chunkInfos": [],
+	"bCookPatchAssets": false,
+	"pakCommandOptions": [],
+	"replacePakCommandTexts": [],
+	"unrealPakOptions": [
+		"-compress",
+		"-compressionformats=Zlib"
+	],
+	"pakTargetPlatforms": [
+		"WindowsNoEditor"
+	],
+	"bCustomPakNameRegular": false,
+	"pakNameRegular": "{VERSION}_{CHUNKNAME}_{PLATFORM}_001_P",
+	"bIgnoreDeleatedAssetsInfo": false,
+	"bSaveDeletedAssetsToNewReleaseJson": true,
+	"bSavePakList": true,
+	"bSaveDiffAnalysis": true,
+	"bSaveAssetRelatedInfo": false,
+	"bSavePatchConfig": true,
+	"savePath":
+	{
+		"path": "E:/UE4_Project/SSCProject/HotPatcher"
+	},
+	"bStandaloneMode": true
+}

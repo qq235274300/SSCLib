@@ -1,27 +1,29 @@
 // Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.
-
+using System.IO;
 using UnrealBuildTool;
-
 
 
 public class SSCPlugins : ModuleRules
 {
-	public SSCPlugins(ReadOnlyTargetRules Target) : base(Target)
-	{
-		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
-      //  PrivatePCHHeaderFile = "Public/MultiViews.h";  private head file 
-        PublicIncludePaths.AddRange(
-			new string[] {
-               // "SSCPlugins/Public",
-            }
-			);
-        //string EnginePath = Path.GetFullPath(Target.RelativeEnginePath);
-      //  string PrivateBSD = EnginePath + "Source/Runtime/Sockets/Private";
+    public SSCPlugins(ReadOnlyTargetRules Target) : base(Target)
+    {
+        PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
+        //PublicIncludePaths.Add(ModuleDirectory);
+        //PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "CommandShop"));
+        //PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "MultiViewPort"));
+        //PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "SSCInventory"));
+        //PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "VisualCustomWidget"));
 
+        PublicIncludePaths.AddRange(
+            new string[] {
+
+               
+            }
+            );
 
         PrivateIncludePaths.AddRange(
-			new string[] {
-                "SSCPlugins",
+            new string[] {
+                 "SSCPlugins",
                 "SSCPlugins/Private",
                 "SSCPlugins/Public",
                 "SSCPlugins/Public/SSCCommon",
@@ -34,6 +36,8 @@ public class SSCPlugins : ModuleRules
                 "SSCPlugins/Private/SSCObject",
                 "SSCPlugins/Public/SSCTest",
                 "SSCPlugins/Private/SSCTest",
+                  "SSCPlugins/Public/SSCUI",
+                "SSCPlugins/Private/SSCUI",
                  "SSCPlugins/SSCInventory/Public",
                 "SSCPlugins/SSCInventory/Private",
                  "SSCPlugins/SimpleGizmo/Public",
@@ -47,15 +51,18 @@ public class SSCPlugins : ModuleRules
                  "SSCPlugins/CommandShop/Public",
                 "SSCPlugins/CommandShop/Private",
             }
-			);
-			
-		
-		PublicDependencyModuleNames.AddRange(
+            );
+
+
+        PublicDependencyModuleNames.AddRange(
 			new string[]
 			{
 				"Core",
                 "CoreUObject",
-                "Engine"
+                "Engine",
+                "Projects",
+                "Slate",
+                "SlateCore"
 				// ... add other public dependencies that you statically link with here ...
 			}
 			);
@@ -64,10 +71,7 @@ public class SSCPlugins : ModuleRules
 		PrivateDependencyModuleNames.AddRange(
 			new string[]
 			{
-				"CoreUObject",
-				"Engine",
-				"Slate",
-				"SlateCore",
+				"CoreUObject",		
                 "UMG",
                 "InputCore",
                 "XmlParser",
@@ -79,15 +83,11 @@ public class SSCPlugins : ModuleRules
                 "AIModule",
                 "GameplayTasks",
                 "HeadMountedDisplay",
-                "ProceduralMeshComponent",
-               
-
-               
+                "ProceduralMeshComponent",                     
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);
-		
-		
+			
 		DynamicallyLoadedModuleNames.AddRange(
 			new string[]
 			{

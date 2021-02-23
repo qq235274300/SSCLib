@@ -905,3 +905,65 @@ public:
 
 
 #pragma endregion
+
+#pragma region UIFrame
+
+UENUM()
+enum class ELayOutType : uint8
+{
+	Canvas = 0,
+	OverLay,
+};
+
+UENUM()
+enum class ELayOutLevel : uint8
+{
+	Level_0 = 0,
+	Level_1,
+	Level_2,
+	Level_3,
+	Level_4,
+	Level_ALL ,
+};
+
+UENUM()
+enum class EPanelShowType : uint8
+{
+	 DoNothing = 0 ,
+	 HideOther,
+	 PopUps
+};
+
+UENUM()
+enum class EPanelTransparentType : uint8 {
+	FullTransparent,        //全透明不可点击
+	Transparent,			//半透明不可点击
+	LowTransparent,			//低透明不可点击
+	FullTransparentClick,   //全透明可点击
+};
+
+USTRUCT()
+struct FUINature 
+{
+	GENERATED_BODY()
+
+public:
+	UPROPERTY(EditAnywhere)
+		ELayOutType LayOutType;
+	UPROPERTY(EditAnywhere)
+		ELayOutLevel LayOutLevel;
+	UPROPERTY(EditAnywhere)
+		EPanelShowType PanelShowType;
+	UPROPERTY(EditAnywhere)
+		EPanelTransparentType TransparentType;
+	UPROPERTY(EditAnywhere) // canvas
+		FAnchors Anchors;
+	UPROPERTY(EditAnywhere) //pos size , padding
+		FMargin Margin;
+	UPROPERTY(EditAnywhere)
+		TEnumAsByte<EHorizontalAlignment> HorizontalAlignment;
+	UPROPERTY(EditAnywhere)
+		TEnumAsByte<EVerticalAlignment> VerticalAlignment;
+};
+
+#pragma endregion

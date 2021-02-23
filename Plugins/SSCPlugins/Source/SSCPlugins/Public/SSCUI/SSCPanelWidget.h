@@ -14,4 +14,13 @@ class SSCPLUGINS_API USSCPanelWidget : public USSCUserWidget
 {
 	GENERATED_BODY()
 	
+public:
+	virtual void PanelEnter();
+	virtual void PanelHidden();
+	virtual void PanelDisplay();
+	virtual void PanelFreeze();
+	virtual void PanelUnFreeze();
+public:
+	UPROPERTY(EditAnywhere, Category = "CustomData")
+		FUINature UINature;
 };

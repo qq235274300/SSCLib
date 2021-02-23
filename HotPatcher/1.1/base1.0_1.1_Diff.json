@@ -1,0 +1,58 @@
+{
+	"assetDiffInfo":
+	{
+		"addAssetDependInfo":
+		{
+			"assetsDependenciesMap":
+			{
+				"Engine":
+				{
+					"moduleCategory": "Engine",
+					"assetDependencyDetails":
+					{
+						"/Engine/BasicShapes/BasicShapeMaterial":
+						{
+							"mPackagePath": "/Engine/BasicShapes/BasicShapeMaterial.BasicShapeMaterial",
+							"mAssetType": "Material",
+							"mGuid": "1D88D1E641E0B513FA38798B8BA7CA7C"
+						},
+						"/Engine/BasicShapes/Cube":
+						{
+							"mPackagePath": "/Engine/BasicShapes/Cube.Cube",
+							"mAssetType": "StaticMesh",
+							"mGuid": "636EBB67487008D95B96F6A4DAA51AF5"
+						}
+					}
+				}
+			}
+		},
+		"modifyAssetDependInfo":
+		{
+			"assetsDependenciesMap":
+			{
+				"Game":
+				{
+					"moduleCategory": "Game",
+					"assetDependencyDetails":
+					{
+						"/Game/ThirdPersonCPP/Maps/ThirdPersonExampleMap":
+						{
+							"mPackagePath": "/Game/ThirdPersonCPP/Maps/ThirdPersonExampleMap.ThirdPersonExampleMap",
+							"mAssetType": "World",
+							"mGuid": "F6B5C1E04C6F3BF2BB8A5D9356A2616F"
+						}
+					}
+				}
+			}
+		},
+		"deleteAssetDependInfo":
+		{
+			"assetsDependenciesMap":
+			{
+			}
+		}
+	},
+	"platformExternDiffInfo":
+	{
+	}
+}

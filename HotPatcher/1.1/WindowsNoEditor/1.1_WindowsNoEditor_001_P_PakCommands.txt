@@ -1,0 +1,8 @@
+"E:/UE4_Project/SSCProject/Saved/Cooked/WindowsNoEditor/Engine/Content/BasicShapes/BasicShapeMaterial.uasset" "../../../Engine/Content/BasicShapes/BasicShapeMaterial.uasset"
+"E:/UE4_Project/SSCProject/Saved/Cooked/WindowsNoEditor/Engine/Content/BasicShapes/BasicShapeMaterial.uexp" "../../../Engine/Content/BasicShapes/BasicShapeMaterial.uexp"
+"E:/UE4_Project/SSCProject/Saved/Cooked/WindowsNoEditor/Engine/Content/BasicShapes/Cube.uasset" "../../../Engine/Content/BasicShapes/Cube.uasset"
+"E:/UE4_Project/SSCProject/Saved/Cooked/WindowsNoEditor/Engine/Content/BasicShapes/Cube.uexp" "../../../Engine/Content/BasicShapes/Cube.uexp"
+"E:/UE4_Project/SSCProject/Saved/Cooked/WindowsNoEditor/SSCProject/Content/ThirdPersonCPP/Maps/ThirdPersonExampleMap.uexp" "../../../SSCProject/Content/ThirdPersonCPP/Maps/ThirdPersonExampleMap.uexp"
+"E:/UE4_Project/SSCProject/Saved/Cooked/WindowsNoEditor/SSCProject/Content/ThirdPersonCPP/Maps/ThirdPersonExampleMap.umap" "../../../SSCProject/Content/ThirdPersonCPP/Maps/ThirdPersonExampleMap.umap"
+"E:/UE4_Project/SSCProject/Saved/Cooked/WindowsNoEditor/SSCProject/AssetRegistry.bin" "../../../SSCProject/AssetRegistry.bin" 
+"E:/UE4_Project/SSCProject/Saved/Cooked/WindowsNoEditor/Engine/GlobalShaderCache-PCD3D_SM5.bin" "../../../Engine/GlobalShaderCache-PCD3D_SM5.bin" 

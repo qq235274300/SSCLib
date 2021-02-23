@@ -1,0 +1,25 @@
+{
+	"versionId": "base1.0",
+	"byPakList": false,
+	"platformsPakListFiles": [],
+	"assetIncludeFilters": [
+		{
+			"path": "/Game"
+		}
+	],
+	"assetIgnoreFilters": [],
+	"bAnalysisFilterDependencies": true,
+	"assetRegistryDependencyTypes": [
+		"Packages"
+	],
+	"bIncludeHasRefAssetsOnly": false,
+	"includeSpecifyAssets": [],
+	"addExternAssetsToPlatform": [],
+	"bSaveAssetRelatedInfo": false,
+	"bSaveReleaseConfig": true,
+	"savePath":
+	{
+		"path": "E:/UE4_Project/SSCProject/HotPatcher"
+	},
+	"bStandaloneMode": true
+}

@@ -1,0 +1,853 @@
+{
+	"versionId": "1.1",
+	"baseVersionId": "base1.0",
+	"date": "2021.02.22-03.36.25",
+	"assetInfo":
+	{
+		"assetsDependenciesMap":
+		{
+			"Game":
+			{
+				"moduleCategory": "Game",
+				"assetDependencyDetails":
+				{
+					"/Game/DesignMode/CommandMode/WBP_ShopItem":
+					{
+						"mPackagePath": "/Game/DesignMode/CommandMode/WBP_ShopItem.WBP_ShopItem",
+						"mAssetType": "WidgetBlueprint",
+						"mGuid": "946577E747E36028C069D88089929E39"
+					},
+					"/Game/FantasyMagic3/Materials/M_CircleGlow":
+					{
+						"mPackagePath": "/Game/FantasyMagic3/Materials/M_CircleGlow.M_CircleGlow",
+						"mAssetType": "Material",
+						"mGuid": "3D8455B641ECAFF1AA3E2B821D6FA68C"
+					},
+					"/Game/FantasyMagic3/Materials/M_GPUSprite":
+					{
+						"mPackagePath": "/Game/FantasyMagic3/Materials/M_GPUSprite.M_GPUSprite",
+						"mAssetType": "Material",
+						"mGuid": "EB64B17A40CF03155F6263B7B6817D8C"
+					},
+					"/Game/FantasyMagic3/Materials/M_RiftShape":
+					{
+						"mPackagePath": "/Game/FantasyMagic3/Materials/M_RiftShape.M_RiftShape",
+						"mAssetType": "Material",
+						"mGuid": "098D33CD4289C8EE353F40B53087E4E5"
+					},
+					"/Game/FantasyMagic3/Materials/Inst/M_LightRingGlow":
+					{
+						"mPackagePath": "/Game/FantasyMagic3/Materials/Inst/M_LightRingGlow.M_LightRingGlow",
+						"mAssetType": "MaterialInstanceConstant",
+						"mGuid": "4C3582AB4B4B708650589B8287751855"
+					},
+					"/Game/FantasyMagic3/Meshes/SM_FireRing":
+					{
+						"mPackagePath": "/Game/FantasyMagic3/Meshes/SM_FireRing.SM_FireRing",
+						"mAssetType": "StaticMesh",
+						"mGuid": "470F6CBA48DF4EC0BC1D23812BFDC453"
+					},
+					"/Game/FantasyMagic3/Meshes/SM_FireRingWall":
+					{
+						"mPackagePath": "/Game/FantasyMagic3/Meshes/SM_FireRingWall.SM_FireRingWall",
+						"mAssetType": "StaticMesh",
+						"mGuid": "86D85FF5433A24E4158B03A4031CDCE6"
+					},
+					"/Game/FantasyMagic3/PS/VF/VF_Simplex_HighFreq_16x16x16":
+					{
+						"mPackagePath": "/Game/FantasyMagic3/PS/VF/VF_Simplex_HighFreq_16x16x16.VF_Simplex_HighFreq_16x16x16",
+						"mAssetType": "VectorFieldStatic",
+						"mGuid": "F1B0991A446EF08EE6E12A9095C8A695"
+					},
+					"/Game/FantasyMagic3/Textures/T_ElecticNoise":
+					{
+						"mPackagePath": "/Game/FantasyMagic3/Textures/T_ElecticNoise.T_ElecticNoise",
+						"mAssetType": "Texture2D",
+						"mGuid": "DCACC02245DDAE4DA7CB39923C27EEF1"
+					},
+					"/Game/FantasyMagic3/Textures/T_FireNoise_01":
+					{
+						"mPackagePath": "/Game/FantasyMagic3/Textures/T_FireNoise_01.T_FireNoise_01",
+						"mAssetType": "Texture2D",
+						"mGuid": "5EF0CCD04634E80052858AB9AE6F54B5"
+					},
+					"/Game/FantasyMagic3/Textures/T_Perlin_01":
+					{
+						"mPackagePath": "/Game/FantasyMagic3/Textures/T_Perlin_01.T_Perlin_01",
+						"mAssetType": "Texture2D",
+						"mGuid": "4E7287FF4C7A5352286D3BA1FD243D79"
+					},
+					"/Game/FantasyMagic3/Textures/T_RiftShape_01":
+					{
+						"mPackagePath": "/Game/FantasyMagic3/Textures/T_RiftShape_01.T_RiftShape_01",
+						"mAssetType": "Texture2D",
+						"mGuid": "979384D3436134A78C8F298833CFB749"
+					},
+					"/Game/FunctionTest/SplitScreen/1p_Actor":
+					{
+						"mPackagePath": "/Game/FunctionTest/SplitScreen/1p_Actor.1p_Actor",
+						"mAssetType": "Blueprint",
+						"mGuid": "E4F6D23444871CA7289425A683CDD1F3"
+					},
+					"/Game/FunctionTest/SplitScreen/1P_Widget":
+					{
+						"mPackagePath": "/Game/FunctionTest/SplitScreen/1P_Widget.1P_Widget",
+						"mAssetType": "WidgetBlueprint",
+						"mGuid": "82E3088C4981CD669DF98BAABC6B469C"
+					},
+					"/Game/FunctionTest/SplitScreen/2p_Actor":
+					{
+						"mPackagePath": "/Game/FunctionTest/SplitScreen/2p_Actor.2p_Actor",
+						"mAssetType": "Blueprint",
+						"mGuid": "971E0E2E4C8732C3526ECCAB2DB495A9"
+					},
+					"/Game/FunctionTest/SplitScreen/2P_Widget":
+					{
+						"mPackagePath": "/Game/FunctionTest/SplitScreen/2P_Widget.2P_Widget",
+						"mAssetType": "WidgetBlueprint",
+						"mGuid": "DD5D97D74759B57482CDA98C9ABD5E3A"
+					},
+					"/Game/FunctionTest/TimeManager/Actor/MonsterActor":
+					{
+						"mPackagePath": "/Game/FunctionTest/TimeManager/Actor/MonsterActor.MonsterActor",
+						"mAssetType": "Blueprint",
+						"mGuid": "30D0F35F4C9702D7AD0130A9DC5F41C8"
+					},
+					"/Game/FunctionTest/TimeManager/Actor/MonsterData/E_ActionType":
+					{
+						"mPackagePath": "/Game/FunctionTest/TimeManager/Actor/MonsterData/E_ActionType.E_ActionType",
+						"mAssetType": "UserDefinedEnum",
+						"mGuid": "DDCF32E04404569DFB2D4A93538D9D56"
+					},
+					"/Game/FunctionTest/TimeManager/Actor/MonsterData/MonsterAction_Table":
+					{
+						"mPackagePath": "/Game/FunctionTest/TimeManager/Actor/MonsterData/MonsterAction_Table.MonsterAction_Table",
+						"mAssetType": "DataTable",
+						"mGuid": "4F91327745EF137E3B6772885DFCD813"
+					},
+					"/Game/FunctionTest/TimeManager/Actor/MonsterData/MonsterPlay_Table01":
+					{
+						"mPackagePath": "/Game/FunctionTest/TimeManager/Actor/MonsterData/MonsterPlay_Table01.MonsterPlay_Table01",
+						"mAssetType": "DataTable",
+						"mGuid": "D55A5C1B4F14C23DF73AB397DEB2EAD3"
+					},
+					"/Game/FunctionTest/TimeManager/Actor/MonsterData/Monster_PlayInfo":
+					{
+						"mPackagePath": "/Game/FunctionTest/TimeManager/Actor/MonsterData/Monster_PlayInfo.Monster_PlayInfo",
+						"mAssetType": "UserDefinedStruct",
+						"mGuid": "167C48974BB781D98598839B1187760F"
+					},
+					"/Game/FunctionTest/TimeManager/Actor/MonsterData/S_ActionInfo":
+					{
+						"mPackagePath": "/Game/FunctionTest/TimeManager/Actor/MonsterData/S_ActionInfo.S_ActionInfo",
+						"mAssetType": "UserDefinedStruct",
+						"mGuid": "882C2BDE4BB8857C2188B6861A887A05"
+					},
+					"/Game/FunctionTest/VariantManager/ShowActor_01":
+					{
+						"mPackagePath": "/Game/FunctionTest/VariantManager/ShowActor_01.ShowActor_01",
+						"mAssetType": "Blueprint",
+						"mGuid": "484D3BF3427B71E6A050F4AB72496FB2"
+					},
+					"/Game/FunctionTest/VariantManager/VariantManager":
+					{
+						"mPackagePath": "/Game/FunctionTest/VariantManager/VariantManager.VariantManager",
+						"mAssetType": "LevelVariantSets",
+						"mGuid": "142D06AA40E8B657BE3932B491B22F6D"
+					},
+					"/Game/Geometry/Meshes/1M_Cube":
+					{
+						"mPackagePath": "/Game/Geometry/Meshes/1M_Cube.1M_Cube",
+						"mAssetType": "StaticMesh",
+						"mGuid": "475349344E02299434F5088DD7BBD0F1"
+					},
+					"/Game/Geometry/Meshes/1M_Cube_Chamfer":
+					{
+						"mPackagePath": "/Game/Geometry/Meshes/1M_Cube_Chamfer.1M_Cube_Chamfer",
+						"mAssetType": "StaticMesh",
+						"mGuid": "AE601EF6470DA780F8ECE7A3F13CC81B"
+					},
+					"/Game/Geometry/Meshes/CubeMaterial":
+					{
+						"mPackagePath": "/Game/Geometry/Meshes/CubeMaterial.CubeMaterial",
+						"mAssetType": "Material",
+						"mGuid": "0ECBA58E4558574DCD1BCC83570CF06B"
+					},
+					"/Game/Geometry/Meshes/TemplateFloor":
+					{
+						"mPackagePath": "/Game/Geometry/Meshes/TemplateFloor.TemplateFloor",
+						"mAssetType": "StaticMesh",
+						"mGuid": "A634A432475E2B28E637CFAA38B40EAE"
+					},
+					"/Game/Mannequin/Animations/ThirdPersonIdle":
+					{
+						"mPackagePath": "/Game/Mannequin/Animations/ThirdPersonIdle.ThirdPersonIdle",
+						"mAssetType": "AnimSequence",
+						"mGuid": "63B1A86F4DD718408817B984FF254985"
+					},
+					"/Game/Mannequin/Animations/ThirdPersonJump_End":
+					{
+						"mPackagePath": "/Game/Mannequin/Animations/ThirdPersonJump_End.ThirdPersonJump_End",
+						"mAssetType": "AnimSequence",
+						"mGuid": "F75DE1D4463173CE3DAA469A76635DD8"
+					},
+					"/Game/Mannequin/Animations/ThirdPersonJump_Loop":
+					{
+						"mPackagePath": "/Game/Mannequin/Animations/ThirdPersonJump_Loop.ThirdPersonJump_Loop",
+						"mAssetType": "AnimSequence",
+						"mGuid": "697029994E43CBC5B04CA5A82A0572B9"
+					},
+					"/Game/Mannequin/Animations/ThirdPersonJump_Start":
+					{
+						"mPackagePath": "/Game/Mannequin/Animations/ThirdPersonJump_Start.ThirdPersonJump_Start",
+						"mAssetType": "AnimSequence",
+						"mGuid": "A2395D374D7ABD5A72DF92999D047F9B"
+					},
+					"/Game/Mannequin/Animations/ThirdPersonRun":
+					{
+						"mPackagePath": "/Game/Mannequin/Animations/ThirdPersonRun.ThirdPersonRun",
+						"mAssetType": "AnimSequence",
+						"mGuid": "E64A307D4526CB9E48B6E9A621CB0E9F"
+					},
+					"/Game/Mannequin/Animations/ThirdPersonWalk":
+					{
+						"mPackagePath": "/Game/Mannequin/Animations/ThirdPersonWalk.ThirdPersonWalk",
+						"mAssetType": "AnimSequence",
+						"mGuid": "79968C754BCC3C48FB66B1A939852DB0"
+					},
+					"/Game/Mannequin/Animations/ThirdPerson_AnimBP":
+					{
+						"mPackagePath": "/Game/Mannequin/Animations/ThirdPerson_AnimBP.ThirdPerson_AnimBP",
+						"mAssetType": "AnimBlueprint",
+						"mGuid": "ABDA2018447AFC75C86BE09125399972"
+					},
+					"/Game/Mannequin/Animations/ThirdPerson_IdleRun_2D":
+					{
+						"mPackagePath": "/Game/Mannequin/Animations/ThirdPerson_IdleRun_2D.ThirdPerson_IdleRun_2D",
+						"mAssetType": "BlendSpace1D",
+						"mGuid": "4A62A8B948422509497D49A9264E7F86"
+					},
+					"/Game/Mannequin/Animations/ThirdPerson_Jump":
+					{
+						"mPackagePath": "/Game/Mannequin/Animations/ThirdPerson_Jump.ThirdPerson_Jump",
+						"mAssetType": "AnimSequence",
+						"mGuid": "B456BC53460D58C305EAAA8086BAF21D"
+					},
+					"/Game/Mannequin/Character/Materials/M_UE4Man_Body":
+					{
+						"mPackagePath": "/Game/Mannequin/Character/Materials/M_UE4Man_Body.M_UE4Man_Body",
+						"mAssetType": "Material",
+						"mGuid": "400F7F8D4CA9123F6988EEB5FE91BD14"
+					},
+					"/Game/Mannequin/Character/Materials/M_UE4Man_ChestLogo":
+					{
+						"mPackagePath": "/Game/Mannequin/Character/Materials/M_UE4Man_ChestLogo.M_UE4Man_ChestLogo",
+						"mAssetType": "MaterialInstanceConstant",
+						"mGuid": "5DA99A534DC49E994B248F93D181F334"
+					},
+					"/Game/Mannequin/Character/Materials/MaterialLayers/ML_GlossyBlack_Latex_UE4":
+					{
+						"mPackagePath": "/Game/Mannequin/Character/Materials/MaterialLayers/ML_GlossyBlack_Latex_UE4.ML_GlossyBlack_Latex_UE4",
+						"mAssetType": "MaterialFunction",
+						"mGuid": "E8D5EC554E69B8A45C37FDAD9D6391A2"
+					},
+					"/Game/Mannequin/Character/Materials/MaterialLayers/ML_Plastic_Shiny_Beige":
+					{
+						"mPackagePath": "/Game/Mannequin/Character/Materials/MaterialLayers/ML_Plastic_Shiny_Beige.ML_Plastic_Shiny_Beige",
+						"mAssetType": "MaterialFunction",
+						"mGuid": "4BC5F3914034B3DC7C69B99265019FB1"
+					},
+					"/Game/Mannequin/Character/Materials/MaterialLayers/ML_Plastic_Shiny_Beige_LOGO":
+					{
+						"mPackagePath": "/Game/Mannequin/Character/Materials/MaterialLayers/ML_Plastic_Shiny_Beige_LOGO.ML_Plastic_Shiny_Beige_LOGO",
+						"mAssetType": "MaterialFunction",
+						"mGuid": "F3BD80AC40B826026EB3B3AE94FDFDE6"
+					},
+					"/Game/Mannequin/Character/Materials/MaterialLayers/ML_SoftMetal_UE4":
+					{
+						"mPackagePath": "/Game/Mannequin/Character/Materials/MaterialLayers/ML_SoftMetal_UE4.ML_SoftMetal_UE4",
+						"mAssetType": "MaterialFunction",
+						"mGuid": "5BA35127457C583F23D6C2973FBD2B17"
+					},
+					"/Game/Mannequin/Character/Materials/MaterialLayers/T_ML_Aluminum01":
+					{
+						"mPackagePath": "/Game/Mannequin/Character/Materials/MaterialLayers/T_ML_Aluminum01.T_ML_Aluminum01",
+						"mAssetType": "Texture2D",
+						"mGuid": "C6FDCB89413C3534FA1DEF95FEDAC5A0"
+					},
+					"/Game/Mannequin/Character/Materials/MaterialLayers/T_ML_Aluminum01_N":
+					{
+						"mPackagePath": "/Game/Mannequin/Character/Materials/MaterialLayers/T_ML_Aluminum01_N.T_ML_Aluminum01_N",
+						"mAssetType": "Texture2D",
+						"mGuid": "43F613E2402C43B92DA02B9189590459"
+					},
+					"/Game/Mannequin/Character/Materials/MaterialLayers/T_ML_Rubber_Blue_01_D":
+					{
+						"mPackagePath": "/Game/Mannequin/Character/Materials/MaterialLayers/T_ML_Rubber_Blue_01_D.T_ML_Rubber_Blue_01_D",
+						"mAssetType": "Texture2D",
+						"mGuid": "BD4130F44F97ED754C81DD9DA029EC19"
+					},
+					"/Game/Mannequin/Character/Materials/MaterialLayers/T_ML_Rubber_Blue_01_N":
+					{
+						"mPackagePath": "/Game/Mannequin/Character/Materials/MaterialLayers/T_ML_Rubber_Blue_01_N.T_ML_Rubber_Blue_01_N",
+						"mAssetType": "Texture2D",
+						"mGuid": "1CC9AE2C45F002C82272F8BECE934EFD"
+					},
+					"/Game/Mannequin/Character/Mesh/SK_Mannequin":
+					{
+						"mPackagePath": "/Game/Mannequin/Character/Mesh/SK_Mannequin.SK_Mannequin",
+						"mAssetType": "SkeletalMesh",
+						"mGuid": "7612C30242CD3A566181798329EAF06F"
+					},
+					"/Game/Mannequin/Character/Mesh/SK_Mannequin_PhysicsAsset":
+					{
+						"mPackagePath": "/Game/Mannequin/Character/Mesh/SK_Mannequin_PhysicsAsset.SK_Mannequin_PhysicsAsset",
+						"mAssetType": "PhysicsAsset",
+						"mGuid": "E0958D3849C344A6C431CAB96AFA23AB"
+					},
+					"/Game/Mannequin/Character/Mesh/UE4_Mannequin_Skeleton":
+					{
+						"mPackagePath": "/Game/Mannequin/Character/Mesh/UE4_Mannequin_Skeleton.UE4_Mannequin_Skeleton",
+						"mAssetType": "Skeleton",
+						"mGuid": "B2A8AEB54415F662B7DCA6B55E87AEAB"
+					},
+					"/Game/Mannequin/Character/Textures/UE4Man_Logo_N":
+					{
+						"mPackagePath": "/Game/Mannequin/Character/Textures/UE4Man_Logo_N.UE4Man_Logo_N",
+						"mAssetType": "Texture2D",
+						"mGuid": "E323C47041832838EF58B6A229332B2F"
+					},
+					"/Game/Mannequin/Character/Textures/UE4_LOGO_CARD":
+					{
+						"mPackagePath": "/Game/Mannequin/Character/Textures/UE4_LOGO_CARD.UE4_LOGO_CARD",
+						"mAssetType": "Texture2D",
+						"mGuid": "F313FA5E4C8E61F3197EA6B0638FF0A0"
+					},
+					"/Game/Mannequin/Character/Textures/UE4_Mannequin_MAT_MASKA":
+					{
+						"mPackagePath": "/Game/Mannequin/Character/Textures/UE4_Mannequin_MAT_MASKA.UE4_Mannequin_MAT_MASKA",
+						"mAssetType": "Texture2D",
+						"mGuid": "2DA2B5214F897332E4EC329590FF3827"
+					},
+					"/Game/Mannequin/Character/Textures/UE4_Mannequin__normals":
+					{
+						"mPackagePath": "/Game/Mannequin/Character/Textures/UE4_Mannequin__normals.UE4_Mannequin__normals",
+						"mAssetType": "Texture2D",
+						"mGuid": "43F84C744E065BF1084B1F96A066F3AC"
+					},
+					"/Game/SSC/AutoSpawnAsset/AutoObj_01":
+					{
+						"mPackagePath": "/Game/SSC/AutoSpawnAsset/AutoObj_01.AutoObj_01",
+						"mAssetType": "Blueprint",
+						"mGuid": "00CB288249F94CE235E77C8B9BD28E87"
+					},
+					"/Game/SSC/AutoSpawnAsset/AutoSpawnActor_1":
+					{
+						"mPackagePath": "/Game/SSC/AutoSpawnAsset/AutoSpawnActor_1.AutoSpawnActor_1",
+						"mAssetType": "Blueprint",
+						"mGuid": "6FA56FA0473707E14ABF0A8B0C0B90D8"
+					},
+					"/Game/SSC/AutoSpawnAsset/AutoWidget_01":
+					{
+						"mPackagePath": "/Game/SSC/AutoSpawnAsset/AutoWidget_01.AutoWidget_01",
+						"mAssetType": "WidgetBlueprint",
+						"mGuid": "AB1EDA844944CEFF404F359665415997"
+					},
+					"/Game/SSC/AutoSpawnAsset/HUD_WealthAsset":
+					{
+						"mPackagePath": "/Game/SSC/AutoSpawnAsset/HUD_WealthAsset.HUD_WealthAsset",
+						"mAssetType": "WealthDataAsset",
+						"mGuid": "BF585ED648FB7D530CA4038BA590F7B1"
+					},
+					"/Game/SSC/AutoSpawnAsset/LoadClass_01":
+					{
+						"mPackagePath": "/Game/SSC/AutoSpawnAsset/LoadClass_01.LoadClass_01",
+						"mAssetType": "Blueprint",
+						"mGuid": "A4F202B2463EEE98271AF28BF7BFC745"
+					},
+					"/Game/SSC/AutoSpawnAsset/LoadClass_2":
+					{
+						"mPackagePath": "/Game/SSC/AutoSpawnAsset/LoadClass_2.LoadClass_2",
+						"mAssetType": "Blueprint",
+						"mGuid": "DA938B6C4EF68B3AD02EF38BDF36CC71"
+					},
+					"/Game/SSC/AutoSpawnAsset/LoadClass_3":
+					{
+						"mPackagePath": "/Game/SSC/AutoSpawnAsset/LoadClass_3.LoadClass_3",
+						"mAssetType": "Blueprint",
+						"mGuid": "AA381EE04098F0D4D49840BEC386978E"
+					},
+					"/Game/SSC/AutoSpawnAsset/LoadClass_4":
+					{
+						"mPackagePath": "/Game/SSC/AutoSpawnAsset/LoadClass_4.LoadClass_4",
+						"mAssetType": "Blueprint",
+						"mGuid": "FCE20AEC4EE4AF21B885DAB764E2042C"
+					},
+					"/Game/SSC/Dirver/CallActor0_BP":
+					{
+						"mPackagePath": "/Game/SSC/Dirver/CallActor0_BP.CallActor0_BP",
+						"mAssetType": "Blueprint",
+						"mGuid": "CC76F1B84ED61CDBA5BEFA8AA1897A87"
+					},
+					"/Game/SSC/Dirver/SSCActor_BP":
+					{
+						"mPackagePath": "/Game/SSC/Dirver/SSCActor_BP.SSCActor_BP",
+						"mAssetType": "Blueprint",
+						"mGuid": "A361B9A442D14514D318FF8FA42EBE62"
+					},
+					"/Game/SSC/Dirver/SSCDriver_BP":
+					{
+						"mPackagePath": "/Game/SSC/Dirver/SSCDriver_BP.SSCDriver_BP",
+						"mAssetType": "Blueprint",
+						"mGuid": "DB3527E2421410AF921E0CB04E667FFD"
+					},
+					"/Game/SSC/Dirver/SSCGameInstance_BP":
+					{
+						"mPackagePath": "/Game/SSC/Dirver/SSCGameInstance_BP.SSCGameInstance_BP",
+						"mAssetType": "Blueprint",
+						"mGuid": "E11B237548A2C1D6554F408609A01EA6"
+					},
+					"/Game/SSC/Dirver/TestActor01_BP":
+					{
+						"mPackagePath": "/Game/SSC/Dirver/TestActor01_BP.TestActor01_BP",
+						"mAssetType": "Blueprint",
+						"mGuid": "1DAAA5A94007FEB6DC4A97818DCF4463"
+					},
+					"/Game/SSC/Dirver/TestActor02_BP":
+					{
+						"mPackagePath": "/Game/SSC/Dirver/TestActor02_BP.TestActor02_BP",
+						"mAssetType": "Blueprint",
+						"mGuid": "27DD80364D494476C4390F81BAE8FED5"
+					},
+					"/Game/SSC/Dirver/Coroutine/CoroActor_BP":
+					{
+						"mPackagePath": "/Game/SSC/Dirver/Coroutine/CoroActor_BP.CoroActor_BP",
+						"mAssetType": "Blueprint",
+						"mGuid": "96E914964EBD182C1F8A2F92E53DBB87"
+					},
+					"/Game/SSC/Texture/1":
+					{
+						"mPackagePath": "/Game/SSC/Texture/1.1",
+						"mAssetType": "Texture2D",
+						"mGuid": "17D2FD00476445A69D463B9277A4798A"
+					},
+					"/Game/SSC/Texture/122_S":
+					{
+						"mPackagePath": "/Game/SSC/Texture/122_S.122_S",
+						"mAssetType": "Texture2D",
+						"mGuid": "BDCE3ADC4D8113D20DF6AC89E8EF81CB"
+					},
+					"/Game/SSC/Texture/66352146f21fbe0994dd1e537c600c338544adf1":
+					{
+						"mPackagePath": "/Game/SSC/Texture/66352146f21fbe0994dd1e537c600c338544adf1.66352146f21fbe0994dd1e537c600c338544adf1",
+						"mAssetType": "Texture2D",
+						"mGuid": "33BA4749498F79A9494E1AB24B8C38CB"
+					},
+					"/Game/SSC/Texture/origin_202010281252456907":
+					{
+						"mPackagePath": "/Game/SSC/Texture/origin_202010281252456907.origin_202010281252456907",
+						"mAssetType": "Texture2D",
+						"mGuid": "F207A7D84908D07E5526A3920B7D53FB"
+					},
+					"/Game/SSC/Texture/origin_202010281320245320":
+					{
+						"mPackagePath": "/Game/SSC/Texture/origin_202010281320245320.origin_202010281320245320",
+						"mAssetType": "Texture2D",
+						"mGuid": "5A6C0BB54FB563AD839629B523FD9C35"
+					},
+					"/Game/SSC/Widget/ButtonTextWidget_BP":
+					{
+						"mPackagePath": "/Game/SSC/Widget/ButtonTextWidget_BP.ButtonTextWidget_BP",
+						"mAssetType": "WidgetBlueprint",
+						"mGuid": "F14C3E4F44AC3BECFE4DC288FE4603D9"
+					},
+					"/Game/SSC/Widget/LoadingWidget0_BP":
+					{
+						"mPackagePath": "/Game/SSC/Widget/LoadingWidget0_BP.LoadingWidget0_BP",
+						"mAssetType": "WidgetBlueprint",
+						"mGuid": "48FCF9054E5B815D57AB04AD08A57CA0"
+					},
+					"/Game/SSC/Widget/Test_01":
+					{
+						"mPackagePath": "/Game/SSC/Widget/Test_01.Test_01",
+						"mAssetType": "WidgetBlueprint",
+						"mGuid": "1DC24A644D46E30B2148D0A154502C7E"
+					},
+					"/Game/SSC/Widget/TestRes/T_01":
+					{
+						"mPackagePath": "/Game/SSC/Widget/TestRes/T_01.T_01",
+						"mAssetType": "Texture2D",
+						"mGuid": "5EC1FE194C8262D946E97D85C0FFAC1A"
+					},
+					"/Game/SSC/Widget/TestRes/T_02":
+					{
+						"mPackagePath": "/Game/SSC/Widget/TestRes/T_02.T_02",
+						"mAssetType": "Texture2D",
+						"mGuid": "3388A35B4F02DE1A52B221B74D514D7D"
+					},
+					"/Game/ThirdPerson/Meshes/Bump_StaticMesh":
+					{
+						"mPackagePath": "/Game/ThirdPerson/Meshes/Bump_StaticMesh.Bump_StaticMesh",
+						"mAssetType": "StaticMesh",
+						"mGuid": "C8C2CC7C4C04F802C5C143AA3401C9ED"
+					},
+					"/Game/ThirdPerson/Meshes/LeftArm_StaticMesh":
+					{
+						"mPackagePath": "/Game/ThirdPerson/Meshes/LeftArm_StaticMesh.LeftArm_StaticMesh",
+						"mAssetType": "StaticMesh",
+						"mGuid": "38337A4F41217EF44CC6DE886401D00B"
+					},
+					"/Game/ThirdPerson/Meshes/Linear_Stair_StaticMesh":
+					{
+						"mPackagePath": "/Game/ThirdPerson/Meshes/Linear_Stair_StaticMesh.Linear_Stair_StaticMesh",
+						"mAssetType": "StaticMesh",
+						"mGuid": "4DD89FCF404C839DC3C1C2929911E620"
+					},
+					"/Game/ThirdPerson/Meshes/RampMaterial":
+					{
+						"mPackagePath": "/Game/ThirdPerson/Meshes/RampMaterial.RampMaterial",
+						"mAssetType": "Material",
+						"mGuid": "77E8584E47EA5057004F7D9784255F69"
+					},
+					"/Game/ThirdPerson/Meshes/Ramp_StaticMesh":
+					{
+						"mPackagePath": "/Game/ThirdPerson/Meshes/Ramp_StaticMesh.Ramp_StaticMesh",
+						"mAssetType": "StaticMesh",
+						"mGuid": "A03166654910536FE6E81795637F1119"
+					},
+					"/Game/ThirdPerson/Meshes/RightArm_StaticMesh":
+					{
+						"mPackagePath": "/Game/ThirdPerson/Meshes/RightArm_StaticMesh.RightArm_StaticMesh",
+						"mAssetType": "StaticMesh",
+						"mGuid": "0247838E4FDE684CDF1FDD93E5F807E1"
+					},
+					"/Game/ThirdPersonCPP/Blueprints/SP_GameMode":
+					{
+						"mPackagePath": "/Game/ThirdPersonCPP/Blueprints/SP_GameMode.SP_GameMode",
+						"mAssetType": "Blueprint",
+						"mGuid": "9BF1FC4B4DF1C98B62BCB285B05DD59D"
+					},
+					"/Game/ThirdPersonCPP/Blueprints/SP_Pawn01":
+					{
+						"mPackagePath": "/Game/ThirdPersonCPP/Blueprints/SP_Pawn01.SP_Pawn01",
+						"mAssetType": "Blueprint",
+						"mGuid": "584D8D0841EFEECAEF222CBED8B4EC25"
+					},
+					"/Game/ThirdPersonCPP/Blueprints/SP_Pawn02":
+					{
+						"mPackagePath": "/Game/ThirdPersonCPP/Blueprints/SP_Pawn02.SP_Pawn02",
+						"mAssetType": "Blueprint",
+						"mGuid": "4B202802466F22E2B52E3EAEB6410A50"
+					},
+					"/Game/ThirdPersonCPP/Blueprints/ThirdPersonCharacter":
+					{
+						"mPackagePath": "/Game/ThirdPersonCPP/Blueprints/ThirdPersonCharacter.ThirdPersonCharacter",
+						"mAssetType": "Blueprint",
+						"mGuid": "BEC98DC44FF7A573C68C57B85347A52B"
+					},
+					"/Game/ThirdPersonCPP/Blueprints/ThirdPersonCharacter_2":
+					{
+						"mPackagePath": "/Game/ThirdPersonCPP/Blueprints/ThirdPersonCharacter_2.ThirdPersonCharacter_2",
+						"mAssetType": "Blueprint",
+						"mGuid": "187DD87E4E3597F784882D896F857A67"
+					},
+					"/Game/ThirdPersonCPP/Maps/ThirdPersonExampleMap":
+					{
+						"mPackagePath": "/Game/ThirdPersonCPP/Maps/ThirdPersonExampleMap.ThirdPersonExampleMap",
+						"mAssetType": "World",
+						"mGuid": "F6B5C1E04C6F3BF2BB8A5D9356A2616F"
+					},
+					"/Game/ThirdPersonCPP/Maps/ThirdPersonExampleMap_BuiltData":
+					{
+						"mPackagePath": "/Game/ThirdPersonCPP/Maps/ThirdPersonExampleMap_BuiltData.ThirdPersonExampleMap_BuiltData",
+						"mAssetType": "MapBuildDataRegistry",
+						"mGuid": "A87B35784F41D6BFB960FEBACF36C1FA"
+					}
+				}
+			},
+			"Script":
+			{
+				"moduleCategory": "Script",
+				"assetDependencyDetails":
+				{
+				}
+			},
+			"Engine":
+			{
+				"moduleCategory": "Engine",
+				"assetDependencyDetails":
+				{
+					"/Engine/Functions/Engine_MaterialFunctions01/Density/ExponentialDensity":
+					{
+						"mPackagePath": "/Engine/Functions/Engine_MaterialFunctions01/Density/ExponentialDensity.ExponentialDensity",
+						"mAssetType": "MaterialFunction",
+						"mGuid": "F28F25F5429EBA7DCB734686506CA051"
+					},
+					"/Engine/Functions/Engine_MaterialFunctions01/Gradient/RadialGradientExponential":
+					{
+						"mPackagePath": "/Engine/Functions/Engine_MaterialFunctions01/Gradient/RadialGradientExponential.RadialGradientExponential",
+						"mAssetType": "MaterialFunction",
+						"mGuid": "D264FA734AD5FFDC00AF689433593A6C"
+					},
+					"/Engine/Functions/Engine_MaterialFunctions02/Utility/BreakOutFloat2Components":
+					{
+						"mPackagePath": "/Engine/Functions/Engine_MaterialFunctions02/Utility/BreakOutFloat2Components.BreakOutFloat2Components",
+						"mAssetType": "MaterialFunction",
+						"mGuid": "7674E4AB4EBF3666B291D29B214BBBFD"
+					},
+					"/Engine/Functions/Engine_MaterialFunctions02/Utility/VectorToRadialValue":
+					{
+						"mPackagePath": "/Engine/Functions/Engine_MaterialFunctions02/Utility/VectorToRadialValue.VectorToRadialValue",
+						"mAssetType": "MaterialFunction",
+						"mGuid": "E831B46646D19957A1092FA2F9B73D0E"
+					},
+					"/Engine/EngineMaterials/WorldGridMaterial":
+					{
+						"mPackagePath": "/Engine/EngineMaterials/WorldGridMaterial.WorldGridMaterial",
+						"mAssetType": "Material",
+						"mGuid": "7BB73211435DB01A3F4B75994CE9C240"
+					},
+					"/Engine/Functions/Engine_MaterialFunctions01/Opacity/CameraDepthFade":
+					{
+						"mPackagePath": "/Engine/Functions/Engine_MaterialFunctions01/Opacity/CameraDepthFade.CameraDepthFade",
+						"mAssetType": "MaterialFunction",
+						"mGuid": "9092F1114FCF7E62E8DA2CAEDF778CD5"
+					},
+					"/Engine/EngineMaterials/T_Default_Material_Grid_M":
+					{
+						"mPackagePath": "/Engine/EngineMaterials/T_Default_Material_Grid_M.T_Default_Material_Grid_M",
+						"mAssetType": "Texture2D",
+						"mGuid": "EF2FDB41497BA5682B349E82B0464472"
+					},
+					"/Engine/EngineMaterials/T_Default_Material_Grid_N":
+					{
+						"mPackagePath": "/Engine/EngineMaterials/T_Default_Material_Grid_N.T_Default_Material_Grid_N",
+						"mAssetType": "Texture2D",
+						"mGuid": "35F9524646F85B43624D1EABF3A0DB13"
+					},
+					"/Engine/EditorBlueprintResources/StandardMacros":
+					{
+						"mPackagePath": "/Engine/EditorBlueprintResources/StandardMacros.StandardMacros",
+						"mAssetType": "Blueprint",
+						"mGuid": "9313609E431572D1601B62ADC75B2E9A"
+					},
+					"/Engine/Functions/Engine_MaterialFunctions02/Texturing/CustomRotator":
+					{
+						"mPackagePath": "/Engine/Functions/Engine_MaterialFunctions02/Texturing/CustomRotator.CustomRotator",
+						"mAssetType": "MaterialFunction",
+						"mGuid": "396F30FC45DC41FAC61CBA9EDD9092A7"
+					},
+					"/Engine/Functions/Engine_MaterialFunctions01/Texturing/FlattenNormal":
+					{
+						"mPackagePath": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/FlattenNormal.FlattenNormal",
+						"mAssetType": "MaterialFunction",
+						"mGuid": "D0379C7C4A6A4CF1CFCB128A613CAFE8"
+					},
+					"/Engine/EngineResources/WhiteSquareTexture":
+					{
+						"mPackagePath": "/Engine/EngineResources/WhiteSquareTexture.WhiteSquareTexture",
+						"mAssetType": "Texture2D",
+						"mGuid": "871180824AA96FF0BDFEE397F989A51F"
+					},
+					"/Engine/EngineMaterials/T_Default_Normal":
+					{
+						"mPackagePath": "/Engine/EngineMaterials/T_Default_Normal.T_Default_Normal",
+						"mAssetType": "Texture2D",
+						"mGuid": "80C5908F4940060F63E4ECA97A13EBE9"
+					},
+					"/Engine/BasicShapes/Cone":
+					{
+						"mPackagePath": "/Engine/BasicShapes/Cone.Cone",
+						"mAssetType": "StaticMesh",
+						"mGuid": "85D2AB4F416E1124F9A362B7E020818F"
+					},
+					"/Engine/EngineMaterials/DefaultMaterial":
+					{
+						"mPackagePath": "/Engine/EngineMaterials/DefaultMaterial.DefaultMaterial",
+						"mAssetType": "Material",
+						"mGuid": "FA05B0C34C63214D00C278AEE65B9F55"
+					},
+					"/Engine/EditorMeshes/ArcadeEditorSphere":
+					{
+						"mPackagePath": "/Engine/EditorMeshes/ArcadeEditorSphere.ArcadeEditorSphere",
+						"mAssetType": "StaticMesh",
+						"mGuid": "AD99481447755DBCD660A5976C9117C0"
+					},
+					"/Engine/EngineSky/BP_Sky_Sphere":
+					{
+						"mPackagePath": "/Engine/EngineSky/BP_Sky_Sphere.BP_Sky_Sphere",
+						"mAssetType": "Blueprint",
+						"mGuid": "9E667403430A75FCEB2C29B294B98714"
+					},
+					"/Engine/EngineSky/C_Sky_Cloud_Color":
+					{
+						"mPackagePath": "/Engine/EngineSky/C_Sky_Cloud_Color.C_Sky_Cloud_Color",
+						"mAssetType": "CurveLinearColor",
+						"mGuid": "BA188D0E4951F303CBB2C5834C7644A0"
+					},
+					"/Engine/EngineSky/C_Sky_Horizon_Color":
+					{
+						"mPackagePath": "/Engine/EngineSky/C_Sky_Horizon_Color.C_Sky_Horizon_Color",
+						"mAssetType": "CurveLinearColor",
+						"mGuid": "9BF770EB4348EE75A55151B4A546DE00"
+					},
+					"/Engine/EngineSky/C_Sky_Zenith_Color":
+					{
+						"mPackagePath": "/Engine/EngineSky/C_Sky_Zenith_Color.C_Sky_Zenith_Color",
+						"mAssetType": "CurveLinearColor",
+						"mGuid": "2F32CA414A1C4626AA06C6A529D6102D"
+					},
+					"/Engine/EngineSky/M_Sky_Panning_Clouds2":
+					{
+						"mPackagePath": "/Engine/EngineSky/M_Sky_Panning_Clouds2.M_Sky_Panning_Clouds2",
+						"mAssetType": "Material",
+						"mGuid": "55ACBEBB474DF41EE124B69859314315"
+					},
+					"/Engine/EngineSky/T_Sky_Blue":
+					{
+						"mPackagePath": "/Engine/EngineSky/T_Sky_Blue.T_Sky_Blue",
+						"mAssetType": "Texture2D",
+						"mGuid": "565EED5E4E44628076500199811DE365"
+					},
+					"/Engine/EngineSky/T_Sky_Clouds_M":
+					{
+						"mPackagePath": "/Engine/EngineSky/T_Sky_Clouds_M.T_Sky_Clouds_M",
+						"mAssetType": "Texture2D",
+						"mGuid": "12D9B39C4B096FCB2FA343B4607FB7BC"
+					},
+					"/Engine/EngineSky/T_Sky_Stars":
+					{
+						"mPackagePath": "/Engine/EngineSky/T_Sky_Stars.T_Sky_Stars",
+						"mAssetType": "Texture2D",
+						"mGuid": "E4289FF04BB2D03F19E0C19812E10FFE"
+					},
+					"/Engine/EngineSky/SM_SkySphere":
+					{
+						"mPackagePath": "/Engine/EngineSky/SM_SkySphere.SM_SkySphere",
+						"mAssetType": "StaticMesh",
+						"mGuid": "E2B88A3A4FD8CE8DF8B90C85C00F4D39"
+					},
+					"/Engine/Functions/Engine_MaterialFunctions02/Utility/BlendAngleCorrectedNormals":
+					{
+						"mPackagePath": "/Engine/Functions/Engine_MaterialFunctions02/Utility/BlendAngleCorrectedNormals.BlendAngleCorrectedNormals",
+						"mAssetType": "MaterialFunction",
+						"mGuid": "34C0E7E549D1EED2E5018F86C35106F1"
+					},
+					"/Engine/Functions/MaterialLayerFunctions/MatLayerBlend_NormalBlend":
+					{
+						"mPackagePath": "/Engine/Functions/MaterialLayerFunctions/MatLayerBlend_NormalBlend.MatLayerBlend_NormalBlend",
+						"mAssetType": "MaterialFunction",
+						"mGuid": "810D343D4D12BC675D9349B7EB988DB8"
+					},
+					"/Engine/Functions/MaterialLayerFunctions/MatLayerBlend_Simple":
+					{
+						"mPackagePath": "/Engine/Functions/MaterialLayerFunctions/MatLayerBlend_Simple.MatLayerBlend_Simple",
+						"mAssetType": "MaterialFunction",
+						"mGuid": "3A66499B41EEDAD5D82AFBB68F15B8A2"
+					},
+					"/Engine/BasicShapes/Cylinder":
+					{
+						"mPackagePath": "/Engine/BasicShapes/Cylinder.Cylinder",
+						"mAssetType": "StaticMesh",
+						"mGuid": "3EF41DE0483D6CD2576523A63EE7D861"
+					},
+					"/Engine/EngineResources/AICON-Green":
+					{
+						"mPackagePath": "/Engine/EngineResources/AICON-Green.AICON-Green",
+						"mAssetType": "Texture2D",
+						"mGuid": "D477E88147284E39701E1A932FBF9E34"
+					},
+					"/Engine/EngineResources/AICON-Red":
+					{
+						"mPackagePath": "/Engine/EngineResources/AICON-Red.AICON-Red",
+						"mAssetType": "Texture2D",
+						"mGuid": "9463418145102062F59A678F7F6BC17D"
+					},
+					"/Engine/BasicShapes/BasicShapeMaterial":
+					{
+						"mPackagePath": "/Engine/BasicShapes/BasicShapeMaterial.BasicShapeMaterial",
+						"mAssetType": "Material",
+						"mGuid": "1D88D1E641E0B513FA38798B8BA7CA7C"
+					},
+					"/Engine/BasicShapes/Cube":
+					{
+						"mPackagePath": "/Engine/BasicShapes/Cube.Cube",
+						"mAssetType": "StaticMesh",
+						"mGuid": "636EBB67487008D95B96F6A4DAA51AF5"
+					}
+				}
+			},
+			"DatasmithContent":
+			{
+				"moduleCategory": "DatasmithContent",
+				"assetDependencyDetails":
+				{
+					"/DatasmithContent/Materials/AliasMaster":
+					{
+						"mPackagePath": "/DatasmithContent/Materials/AliasMaster.AliasMaster",
+						"mAssetType": "Material",
+						"mGuid": "847EF6274B5FA732055096A16A43FAE6"
+					},
+					"/DatasmithContent/Materials/FBXImporter/DeltaGenMaster":
+					{
+						"mPackagePath": "/DatasmithContent/Materials/FBXImporter/DeltaGenMaster.DeltaGenMaster",
+						"mAssetType": "Material",
+						"mGuid": "9CF00F1C4615C020BD8C359B378A10D6"
+					},
+					"/DatasmithContent/Materials/FBXImporter/DeltaGenBase":
+					{
+						"mPackagePath": "/DatasmithContent/Materials/FBXImporter/DeltaGenBase.DeltaGenBase",
+						"mAssetType": "MaterialFunction",
+						"mGuid": "9DE668914F94079563FC1E87EB3B1555"
+					},
+					"/DatasmithContent/Materials/FBXImporter/DeltaGenUVEdit":
+					{
+						"mPackagePath": "/DatasmithContent/Materials/FBXImporter/DeltaGenUVEdit.DeltaGenUVEdit",
+						"mAssetType": "MaterialFunction",
+						"mGuid": "CC89362C40147A6D8B41DC90558581FA"
+					}
+				}
+			},
+			"SSCPlugins":
+			{
+				"moduleCategory": "SSCPlugins",
+				"assetDependencyDetails":
+				{
+					"/SSCPlugins/BP/SplitScreen/SplitScreenMgr":
+					{
+						"mPackagePath": "/SSCPlugins/BP/SplitScreen/SplitScreenMgr.SplitScreenMgr",
+						"mAssetType": "Blueprint",
+						"mGuid": "E4149A9B49E8865CAB33B89A86A9180F"
+					},
+					"/SSCPlugins/UMG/DraggableWidget/TestDrag":
+					{
+						"mPackagePath": "/SSCPlugins/UMG/DraggableWidget/TestDrag.TestDrag",
+						"mAssetType": "WidgetBlueprint",
+						"mGuid": "5EF30F1C4461068F52E1B7B0D3A97414"
+					},
+					"/SSCPlugins/UMG/DraggableWidget/SimpleDraggableWidget":
+					{
+						"mPackagePath": "/SSCPlugins/UMG/DraggableWidget/SimpleDraggableWidget.SimpleDraggableWidget",
+						"mAssetType": "WidgetBlueprint",
+						"mGuid": "E0852E974703D1CAE8692EA9DD55B229"
+					},
+					"/SSCPlugins/UMG/DraggableWidget/SimpleContent":
+					{
+						"mPackagePath": "/SSCPlugins/UMG/DraggableWidget/SimpleContent.SimpleContent",
+						"mAssetType": "WidgetBlueprint",
+						"mGuid": "9EBDFFCB466FF8E4F42F1F8FFACA555D"
+					},
+					"/SSCPlugins/UMG/PhotoAlubm/SimplePhotoWidget":
+					{
+						"mPackagePath": "/SSCPlugins/UMG/PhotoAlubm/SimplePhotoWidget.SimplePhotoWidget",
+						"mAssetType": "WidgetBlueprint",
+						"mGuid": "462DAC854C3111E462932DB6288B6256"
+					}
+				}
+			}
+		}
+	},
+	"platformAssets":
+	{
+	}
+}

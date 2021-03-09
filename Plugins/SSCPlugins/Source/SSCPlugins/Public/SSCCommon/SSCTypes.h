@@ -379,7 +379,7 @@ bool FFuncCallHandle<RetType, VarTypes...>::IsBound()
 template<typename RetType, typename...VarTypes>
 RetType FFuncCallHandle<RetType, VarTypes...>::Execute(VarTypes... Params)
 {
-	if ( !IsBound() ||  !*IsActived.Get()) return NULL;
+	//if ( !IsBound() ||  !*IsActived.Get()) return NULL;
 	return FuncQuene->Exectue<RetType, VarTypes...>(CallName, Params...);
 }
 

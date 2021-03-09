@@ -50,6 +50,7 @@ public class SSCPlugins : ModuleRules
                 "SSCPlugins/RunTimeCamera/Private",
                  "SSCPlugins/CommandShop/Public",
                 "SSCPlugins/CommandShop/Private",
+             
             }
             );
 

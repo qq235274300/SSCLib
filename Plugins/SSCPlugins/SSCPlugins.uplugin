@@ -25,6 +25,14 @@
         "Mac",
         "IOS"
       ]
+    },
+    {
+      "Name": "SSCLoadingScreen",
+      "Type": "Runtime",
+      "LoadingPhase": "PreLoadingScreen",
+      "WhitelistPlatforms": [
+        "Win64"
+      ]
     }
   ]
 }

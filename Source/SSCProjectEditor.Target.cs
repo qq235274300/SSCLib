@@ -9,6 +9,6 @@ public class SSCProjectEditorTarget : TargetRules
 	{
 		Type = TargetType.Editor;
 		DefaultBuildSettings = BuildSettingsVersion.V2;
-        ExtraModuleNames.AddRange(new string[] { "SSCProject", "SSCPlugins" });
+        ExtraModuleNames.AddRange(new string[] { "SSCProject", "SSCPlugins"});
     }
 }

@@ -27,6 +27,10 @@ public:
 		void AdvanceLoadPanel(FName WealthName);
 	UFUNCTION()
 		void ShowPanel(FName WealthName);
+	UFUNCTION()
+		void HidePanel(FName WealthName);
+	UFUNCTION()
+		void ExitPanel(FName WealthName);
 
 public:
 /**********************绑定回调********************************/
@@ -42,9 +46,32 @@ protected:
 	void DoEnterPanel(FName WealthName);
 	void DoDispalyPanel(FName WealthName);
 
+	void EnterPanelDoNothing(UCanvasPanel* ParentLayout,USSCPanelWidget* PanelWidget);
+	void EnterPanelDoNothing(UOverlay* ParentLayout, USSCPanelWidget* PanelWidget);
+
+	void EnterPanelHideOther(UCanvasPanel* ParentLayout, USSCPanelWidget* PanelWidget);
+	void EnterPanelHideOther(UOverlay* ParentLayout, USSCPanelWidget* PanelWidget);
+
+	void EnterPanelPopsUp(UCanvasPanel* ParentLayout, USSCPanelWidget* PanelWidget);
+	void EnterPanelPopsUp(UOverlay* ParentLayout, USSCPanelWidget* PanelWidget);
+
 	void DispalyPanelDoNothing(USSCPanelWidget* PanelWidget);
 	void DispalyPanelHideOther(USSCPanelWidget* PanelWidget);
 	void DispalyPanelPopsUp(USSCPanelWidget* PanelWidget);
+
+	void HidePanelDoNothing(USSCPanelWidget* PanelWidget);
+	void HidePanelHideOther(USSCPanelWidget* PanelWidget);
+	void HidePanelPopsUp(USSCPanelWidget* PanelWidget);
+
+	void ExitPanelDoNothing(USSCPanelWidget* PanelWidget);
+	void ExitPanelHideOther(USSCPanelWidget* PanelWidget);
+	void ExitPanelPopsUp(USSCPanelWidget* PanelWidget);
+
+	UFUNCTION()
+	void WaitShowPanel();
+	//PanelExit 回调方法
+	UFUNCTION()
+		void BindPanelExit(ELayOutType LayoutType, UPanelWidget* InLayout);
 
 protected:
 /************************************************************/
@@ -63,14 +90,22 @@ protected:
 	TMap<FName, USSCPanelWidget*> ShowPanelGroup;
 	TMap<FName, USSCPanelWidget*> PopPanelGroup;
 	
+/************************************************************/
+
+
+/************************************************************/
+	void ActiveMask(UCanvasPanel* ParentLayout, EPanelTransparentType TransparentType);
+	void ActiveMask(UOverlay* ParentLayout, EPanelTransparentType TransparentType);
+
+	void TransferMask(USSCPanelWidget* PanelWidget);
+
+	void RemoveMask(UPanelWidget* ParentLayout = NULL);
 
 /************************************************************/
 
 
-
-
 /************************************************************/
-	UPROPERTY(meta = (BindWidget))
+	UPROPERTY()
 		UCanvasPanel* RootCanvas;
 	UPROPERTY() 
 		UImage* Mask; //弹窗遮罩
@@ -82,4 +117,9 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "CustomData", meta = (DisplayName = "LowMaskColor"))
 		FLinearColor LowTransparentColor;
 /************************************************************/
+
+
+protected:
+	TArray<FName> WaitShowPanelArray;
+	FName WaitShowPanelTaskName;
 };

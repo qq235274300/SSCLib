@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
 #include "SSCDefine.h"
-#include "SSCGCommon.h"
+#include "SSCGame/SSCGCommon.h"
 #include "SSCCommon.generated.h"
 
 /**
